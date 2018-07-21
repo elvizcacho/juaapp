@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "node app.js",
+    "watch": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/elvizcacho/juaapp.git"
+  },
+  "keywords": [
+    "juaapp"
+  ],
+  "author": "Sebastian Vizcaino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elvizcacho/juaapp/issues"
+  },
+  "homepage": "https://github.com/elvizcacho/juaapp#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
