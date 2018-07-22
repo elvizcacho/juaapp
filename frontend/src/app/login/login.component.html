@@ -1,0 +1,13 @@
+
+<form class="form">
+  <div class="form-header"></div>
+  <mat-form-field class="form-input">
+    <input matInput type="text" placeholder="Email" [(ngModel)]="email" name="email"/>
+  </mat-form-field>
+  <mat-form-field class="form-input">
+    <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password"/>
+  </mat-form-field>
+  <div class="btn-container">
+    <button type="button" mat-stroked-button color="primary" class="submit-btn" (click)="logIn(email, password)">Log In</button>
+  </div>
+</form>

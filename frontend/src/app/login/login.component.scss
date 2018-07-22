@@ -1,0 +1,40 @@
+@import '../../assets/styles/_variables';
+
+.form {
+  margin: auto;
+  width: 100%;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $dividerColor;
+  height: 249px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  .form-header {
+    padding: 20px 20px;
+    background-color: $darkPrimaryColor;
+    color: $textColor;
+    font-family: $robotoFontName;
+
+  }
+  .form-input {
+    padding: 0px 20px;
+  }
+  .form-input:nth-of-type(1) {
+    padding-top: 20px;
+  }
+  .btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .submit-btn {
+      width: 50px;
+      margin: 0px 20px 20px 20px;
+    }
+  }
+
+}
