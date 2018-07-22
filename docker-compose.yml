@@ -3,7 +3,7 @@ version: '3.2'
 services:
   
   db:
-    image: library/postgres
+    image: postgres:alpine
     restart: always
     environment:
       POSTGRES_USER: admin
@@ -39,6 +39,13 @@ services:
       - app-network
     depends_on:
       - db
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: copito
+      POSTGRES_DB: db_juaapp
+      POSTGRES_HOST: db
+      JWT_SECRET: 'jugandofuchi'
+      
       
   app:
     build:

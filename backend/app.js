@@ -3,6 +3,12 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 
+// load models
+require('./associations');
+
+// load authentication
+require('./authentication');
+
 //Allow api cross domain
 app.use(function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', req.headers.origin || '*');

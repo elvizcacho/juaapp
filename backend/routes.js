@@ -1,8 +1,9 @@
 
 module.exports = (app) => {
   
-  require('./logIn').routes(app);
+  require('./login').routes(app);
+  require('./users').routes(app);
   
-  app.get('/', (req, res) => res.send('Hello World!XX'));
+  app.get('/', (req, res) => res.send('Routes loaded'));
   
 }
