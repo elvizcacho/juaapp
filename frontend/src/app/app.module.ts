@@ -3,13 +3,16 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from './app.material.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { PageNotFoundComponent } from './shared/components/page-not-found';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login';
+
+import { LogInService } from './shared/services/login.service';
 
 
 @NgModule({
@@ -25,8 +28,9 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     AppMaterialModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LogInService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

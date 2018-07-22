@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { LogInService } from '../shared/services/login.service';
 
 @Component({
   selector: 'login',
@@ -12,12 +12,12 @@ export class LoginComponent {
   public email: string = '';
   public password: string = '';
 
-  constructor() {
-    console.log('LoginComponent is loaded');
-  }
+  constructor(private logInService: LogInService) {}
 
   public logIn(email: string, password: string): void {
-    console.log(email, password);
+    this.logInService
+      .logIn(email, password)
+      .subscribe((data: any) => console.log(data));
   }
 
 }
