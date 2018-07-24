@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './shared/components/page-not-found';
-import { LoginComponent } from './login';
-import { AppComponent } from './app.component';
 import { environment } from '../environments/environment.prod';
+
+import { PageNotFoundComponent } from './shared/components/page-not-found';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login';
+import { HomeComponent } from './home';
+
 
 const routes: Routes = [
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'home', component: HomeComponent
   },
   { path: '**', component: PageNotFoundComponent }
 ];

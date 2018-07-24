@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LogInService } from '../shared/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -12,12 +13,18 @@ export class LoginComponent {
   public email: string = '';
   public password: string = '';
 
-  constructor(private logInService: LogInService) {}
+  constructor(
+    private logInService: LogInService,
+    private router: Router
+  ) {}
 
   public logIn(email: string, password: string): void {
     this.logInService
       .logIn(email, password)
-      .subscribe((data: any) => console.log(data));
+      .subscribe((res: any) => {
+        this.router.navigate(['home']);
+      })
+
   }
 
 }

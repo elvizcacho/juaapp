@@ -8,9 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from './app.material.module';
 import { AppRoutingModule } from './app-routing.module';
+import { Ng2Webstorage } from 'ngx-webstorage';
+
 
 import { PageNotFoundComponent } from './shared/components/page-not-found';
 import { LoginComponent } from './login';
+import { HomeComponent } from './home';
 
 import { LogInService } from './shared/services/login.service';
 
@@ -19,7 +22,8 @@ import { LogInService } from './shared/services/login.service';
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,8 @@ import { LogInService } from './shared/services/login.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2Webstorage.forRoot({prefix: 'juaapp', separator: '_', caseSensitive: true })
   ],
   providers: [LogInService],
   bootstrap: [AppComponent]

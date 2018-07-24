@@ -58,6 +58,18 @@ services:
       - 3000:80
     networks:
       - app-network
+      
+  haproxy:
+    image: haproxy:1.8.12-alpine
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    ports:
+      - 5000:80
+    depends_on:
+      - api
+      - app
+    networks:
+      - app-network
             
 networks:
   app-network:      
