@@ -17,6 +17,8 @@ import { HomeComponent } from './home';
 
 import { LogInService } from './shared/services/login.service';
 
+import { AuthGuard } from './shared/guards/auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { LogInService } from './shared/services/login.service';
     HttpClientModule,
     Ng2Webstorage.forRoot({prefix: 'juaapp', separator: '_', caseSensitive: true })
   ],
-  providers: [LogInService],
+  providers: [LogInService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

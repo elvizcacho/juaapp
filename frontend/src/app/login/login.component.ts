@@ -13,16 +13,21 @@ export class LoginComponent {
   public email: string = '';
   public password: string = '';
 
+
   constructor(
     private logInService: LogInService,
     private router: Router
-  ) {}
+  ) {
+    if (this.logInService.isLoggedIn()) {
+      this.router.navigate(['home']);
+    }
+  }
 
   public logIn(email: string, password: string): void {
     this.logInService
       .logIn(email, password)
       .subscribe((res: any) => {
-        this.router.navigate(['home']);
+        this.router.navigate([this.logInService.redirectUrl || 'home']);
       })
 
   }
