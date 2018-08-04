@@ -1,10 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4000;
-
-
-// load models
-require('./associations');
+require('./db/models');
 
 // load authentication
 require('./authentication');

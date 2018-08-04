@@ -1,4 +1,4 @@
-const User = require('./model');
+const User = require('../db/models').User;
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 

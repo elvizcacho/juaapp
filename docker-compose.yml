@@ -5,6 +5,8 @@ services:
   db:
     image: postgres:alpine
     restart: always
+    ports:
+      - 5432:5432
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: adminpassword
@@ -40,8 +42,8 @@ services:
     depends_on:
       - db
     environment:
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD: copito
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
       POSTGRES_DB: db_juaapp
       POSTGRES_HOST: db
       JWT_SECRET: 'jugandofuchi'
