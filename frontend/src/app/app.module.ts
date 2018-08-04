@@ -11,7 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { Ng2Webstorage } from 'ngx-webstorage';
 
 
-import { PageNotFoundComponent } from './shared/components/page-not-found';
+import { ComponentsModule } from './shared/components';
+
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
 
@@ -23,7 +24,6 @@ import { AuthGuard } from './shared/guards/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
     LoginComponent,
     HomeComponent
   ],
@@ -35,7 +35,8 @@ import { AuthGuard } from './shared/guards/auth.guard';
     BrowserAnimationsModule,
     AppMaterialModule,
     HttpClientModule,
-    Ng2Webstorage.forRoot({prefix: 'juaapp', separator: '_', caseSensitive: true })
+    Ng2Webstorage.forRoot({prefix: 'juaapp', separator: '_', caseSensitive: true }),
+    ComponentsModule
   ],
   providers: [LogInService, AuthGuard],
   bootstrap: [AppComponent]

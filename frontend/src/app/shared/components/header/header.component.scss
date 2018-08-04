@@ -1,0 +1,19 @@
+@import '../../../../assets/styles/_variables.scss';
+
+::ng-deep .menu-suboptions {
+  background-color: $lightPrimaryColor;
+  margin-top: 10px;
+  .mat-menu-content {
+    button {
+      color: $primaryTextColor;
+    }
+  }
+}
+
+.menu-container {
+  background-color: $primaryColor;
+  .menu-option {
+    color: $primaryTextColor;
+    margin: 10px 0px;
+  }
+}

@@ -1,0 +1,19 @@
+<div class="menu-container">
+  <button  class="menu-option" mat-button [matMenuTriggerFor]="menu_freelance">Freelance</button>
+  <button  class="menu-option" mat-button [matMenuTriggerFor]="menu_accounting">Accounting</button>
+  <button  class="menu-option" mat-button [matMenuTriggerFor]="menu_profile">Profile</button>
+
+  <mat-menu [overlapTrigger]="false" class="menu-suboptions" #menu_freelance="matMenu">
+    <button mat-menu-item>Projects</button>
+  </mat-menu>
+  <mat-menu [overlapTrigger]="false" class="menu-suboptions" #menu_accounting="matMenu">
+    <button mat-menu-item>Balance</button>
+    <button mat-menu-item>Taxes</button>
+  </mat-menu>
+  <mat-menu [overlapTrigger]="false" class="menu-suboptions" #menu_profile="matMenu">
+    <button mat-menu-item>CV</button>
+    <button mat-menu-item>Invoicing</button>
+    <button mat-menu-item>Banking</button>
+  </mat-menu>
+
+</div>

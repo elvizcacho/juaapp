@@ -7,7 +7,7 @@
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  border: 1px solid $dividerColor;
+  border: 1px solid $primaryColor;
   height: 249px;
   position: absolute;
   left: 0;
@@ -17,7 +17,7 @@
   .form-header {
     padding: 20px 20px;
     background-color: $darkPrimaryColor;
-    color: $textColor;
+    color: $primaryTextColor;
     font-family: $robotoFontName;
 
   }

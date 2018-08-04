@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatMenuModule
 } from '@angular/material';
 
 export const MATERIAL_MODULES = [
   MatButtonModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatMenuModule
 ];
 
 @NgModule({
