@@ -1,19 +1,19 @@
 <div class="menu-container">
-  <button  class="menu-option" mat-button [matMenuTriggerFor]="menu_freelance">Freelance</button>
-  <button  class="menu-option" mat-button [matMenuTriggerFor]="menu_accounting">Accounting</button>
-  <button  class="menu-option" mat-button [matMenuTriggerFor]="menu_profile">Profile</button>
+  <button  class="menu-option" mat-button [matMenuTriggerFor]="menu_freelance">{{ 'header.freelance.title' | translate }}</button>
+  <button  class="menu-option" mat-button [matMenuTriggerFor]="menu_accounting">{{ 'header.accounting.title' | translate }}</button>
+  <button  class="menu-option" mat-button [matMenuTriggerFor]="menu_profile">{{ 'header.profile.title' | translate }}</button>
 
   <mat-menu [overlapTrigger]="false" class="menu-suboptions" #menu_freelance="matMenu">
-    <button mat-menu-item>Projects</button>
+    <button mat-menu-item>{{ 'header.freelance.projects.title' | translate }}</button>
   </mat-menu>
   <mat-menu [overlapTrigger]="false" class="menu-suboptions" #menu_accounting="matMenu">
-    <button mat-menu-item>Balance</button>
-    <button mat-menu-item>Taxes</button>
+    <button mat-menu-item>{{ 'header.accounting.balance.title' | translate }}</button>
+    <button mat-menu-item>{{ 'header.accounting.taxes.title' | translate }}</button>
   </mat-menu>
   <mat-menu [overlapTrigger]="false" class="menu-suboptions" #menu_profile="matMenu">
-    <button mat-menu-item>CV</button>
-    <button mat-menu-item>Invoicing</button>
-    <button mat-menu-item>Banking</button>
+    <button mat-menu-item>{{ 'header.profile.cv.title' | translate }}</button>
+    <button mat-menu-item>{{ 'header.profile.invoicing.title' | translate }}</button>
+    <button mat-menu-item>{{ 'header.profile.banking.title' | translate }}</button>
   </mat-menu>
 
 </div>

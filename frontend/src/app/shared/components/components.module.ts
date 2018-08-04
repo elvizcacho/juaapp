@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found';
 import { HeaderComponent } from './header';
 import { AppMaterialModule } from '../../app.material.module';
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   declarations: [
     PageNotFoundComponent,
@@ -11,7 +13,8 @@ import { AppMaterialModule } from '../../app.material.module';
     HeaderComponent
   ],
   imports: [
-    AppMaterialModule
+    AppMaterialModule,
+    TranslateModule
   ]
 })
 export class ComponentsModule { }

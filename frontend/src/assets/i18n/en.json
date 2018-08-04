@@ -1,0 +1,13 @@
+{
+  "header.freelance.title": "Freelance",
+  "header.freelance.projects.title": "Projects",
+
+  "header.accounting.title": "Accounting",
+  "header.accounting.balance.title": "Balance",
+  "header.accounting.taxes.title": "Taxes",
+
+  "header.profile.title": "Profile",
+  "header.profile.cv.title": "CV",
+  "header.profile.invoicing.title": "Invoicing",
+  "header.profile.banking.title": "Banking"
+}
