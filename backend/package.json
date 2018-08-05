@@ -6,7 +6,8 @@
   "scripts": {
     "test": "test",
     "start": "node app.js",
-    "watch": "nodemon app.js"
+    "watch": "nodemon app.js",
+    "sequelize": "./node_modules/.bin/sequelize"
   },
   "repository": {
     "type": "git",

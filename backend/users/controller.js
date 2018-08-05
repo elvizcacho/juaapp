@@ -2,36 +2,18 @@ const User = require('../db/models').User;
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-function list(req, res) {
-  const query = req.query.q;
-  const searchQuery = {
-    where: {
-      [Op.or]: [
-        {
-          firstName: {
-            [Op.iLike]: `%${query}%`
-          },
-        },
-        {
-          lastName: {
-            [Op.iLike]: `%${query}%`
-          }
-        },
-        {
-          email: {
-            [Op.iLike]: `%${query}%`
-          }
-        }
-      ]
-    }
-  };
-  const findQuery = (query) ? searchQuery : {};
+function getUserProjects(req, res) {
   User
-    .findAll(findQuery)
-    .then(users => {
-      res.send(users);
+    .findOne({
+      where: {
+        id: req.params.id
+      }
     })
+    .then(user => {
+      return user.getProjects();
+    })
+    .then(projects => res.send(projects));
   
 }
 
-module.exports.list = list;
+module.exports.getUserProjects = getUserProjects;
