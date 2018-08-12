@@ -4,7 +4,7 @@
   <button  class="menu-option" mat-button [matMenuTriggerFor]="menu_profile">{{ 'header.profile.title' | translate }}</button>
 
   <mat-menu [overlapTrigger]="false" class="menu-suboptions" #menu_freelance="matMenu">
-    <button mat-menu-item>{{ 'header.freelance.projects.title' | translate }}</button>
+    <button mat-menu-item (click)="goTo('projects')">{{ 'header.freelance.projects.title' | translate }}</button>
   </mat-menu>
   <mat-menu [overlapTrigger]="false" class="menu-suboptions" #menu_accounting="matMenu">
     <button mat-menu-item>{{ 'header.accounting.balance.title' | translate }}</button>

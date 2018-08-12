@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from './shared/components/page-not-found';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
+import { ProjectsComponent } from './projects';
 
 // guards
 import { AuthGuard } from './shared/guards/auth.guard';
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard]
   },
   { path: '**', component: PageNotFoundComponent }
 ];

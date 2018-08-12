@@ -1,0 +1,17 @@
+
+
+<div class="content-container">
+  <div class="project" *ngFor="let project of projects">
+    <div class="title">
+      {{ project.name }}
+    </div>
+    <div class="info-box">
+      <span class="label">Contract Period</span>
+      <span class="info">{{ project.startDate | date:'mediumDate' }} - {{ project.endDate | date:'mediumDate' }}</span>
+    </div>
+    <div class="info-box">
+      <span class="label">Contact</span>
+      <span class="info email">{{ project.contactEmail }}</span>
+    </div>
+  </div>
+</div>

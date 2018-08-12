@@ -1,0 +1,40 @@
+@import '../../assets/styles/_variables';
+@import '../../assets/styles/_mixins';
+
+.content-container {
+  max-width: 1170px;
+  margin: 50px auto;
+
+  .project {
+    border: 1px solid $secondaryColor;
+    max-width: 250px;
+    @include materialCardShadow;
+    .title {
+      @include primaryFont;
+      background-color: $secondaryColor;
+      color: $secondaryTextColor;
+      padding: 10px;
+      text-align: left;
+    }
+    .info-box {
+      padding: 10px;
+      &:not(:last-child) {
+        border-bottom: 1px solid $secondaryColor;
+      }
+      .label {
+        @include primaryFont;
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .info {
+        @include primaryFont;
+        display: block;
+        &.email {
+          cursor: pointer;
+        }
+      }
+
+    }
+  }
+}

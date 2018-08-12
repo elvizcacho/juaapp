@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -16,13 +16,17 @@ import { ComponentsModule } from './shared/components';
 
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
+import { ProjectsComponent } from './projects';
 
 import { LogInService } from './shared/services/login.service';
+import { ProjectService } from './shared/services/project.service';
 
 import { AuthGuard } from './shared/guards/auth.guard';
 
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import { httpInterceptorProviders } from './shared/interceptors';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -35,7 +39,8 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,12 @@ export function createTranslateLoader(http: HttpClient) {
         }
     })
   ],
-  providers: [LogInService, AuthGuard],
+  providers: [
+    httpInterceptorProviders,
+    LogInService,
+    AuthGuard,
+    ProjectService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

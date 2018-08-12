@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'j-header',
@@ -8,7 +8,11 @@ import { Component } from '@angular/core';
 })
 
 export class HeaderComponent {
-  constructor() {
-    console.log('puta');
+
+  public constructor(private router: Router) {}
+
+  public goTo(route: string): void {
+    this.router.navigate(['projects']);
   }
+
 }
