@@ -18,4 +18,8 @@ export class ProjectService {
         return this.http.get(this.USER_PROJECTS_URL) as Observable<Project[]>;
     }
 
+    public getProjectById(projectId: string): Observable<Project> {
+        return this.http.get(`${this.USER_PROJECTS_URL}/${projectId}`) as Observable<Project>;
+    }
+
 }

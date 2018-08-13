@@ -1,6 +1,8 @@
-'use strict';
+
+const moment = require('moment');
+
 module.exports = (sequelize, DataTypes) => {
-  var Project = sequelize.define('Project', {
+  const Project = sequelize.define('Project', {
     name: DataTypes.STRING,
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
@@ -11,8 +13,23 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     paymentMonthDay: DataTypes.INTEGER
   }, {});
+  
   Project.associate = function(models) {
     models.Project.belongsToMany(models.User, {through: 'UserProject'});
   };
+  
+  Project.prototype.getPeriods = function () {
+    
+    const dateStart = moment(this.startDate);
+    const dateEnd = moment(this.endDate);
+    const periods = [];
+
+    while (dateEnd > dateStart || dateStart.format('M') === dateEnd.format('M')) {
+       periods.push(dateStart.format('YYYY-MM'));
+       dateStart.add(1,'month');
+    }
+    return periods;
+  }
+  
   return Project;
 };

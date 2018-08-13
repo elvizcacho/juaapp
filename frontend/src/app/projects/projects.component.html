@@ -3,7 +3,18 @@
 <div class="content-container">
   <div class="project" *ngFor="let project of projects">
     <div class="title">
-      {{ project.name }}
+      <span class="text">{{ project.name }}</span>
+      <mat-icon class="icon" [matMenuTriggerFor]="project_menu">more_horiz</mat-icon>
+      <mat-menu #project_menu="matMenu">
+        <button mat-menu-item (click)="goTo('projects/' + project.id + '/timesheets')">
+          <mat-icon class="icon">add_circle_outline</mat-icon>
+          <span>{{ 'project.menu.timesheet' | translate }}</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon class="icon">add_circle_outline</mat-icon>
+          <span>{{ 'project.menu.invoice' | translate }}</span>
+        </button>
+      </mat-menu>
     </div>
     <div class="info-box">
       <span class="label">Contract Period</span>

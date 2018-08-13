@@ -3,14 +3,22 @@ import {
   MatButtonModule,
   MatInputModule,
   MatFormFieldModule,
-  MatMenuModule
+  MatMenuModule,
+  MatIconModule,
+  MatTableModule,
+  MatOptionModule,
+  MatSelectModule
 } from '@angular/material';
 
 export const MATERIAL_MODULES = [
   MatButtonModule,
   MatInputModule,
   MatFormFieldModule,
-  MatMenuModule
+  MatMenuModule,
+  MatIconModule,
+  MatTableModule,
+  MatOptionModule,
+  MatSelectModule
 ];
 
 @NgModule({

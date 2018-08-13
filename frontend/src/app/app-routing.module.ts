@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
 import { ProjectsComponent } from './projects';
+import { TimesheetsComponent } from './projects/timesheets/timesheets.component';
 
 // guards
 import { AuthGuard } from './shared/guards/auth.guard';
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'projects/:projectId/timesheets', component: TimesheetsComponent, canActivate: [AuthGuard] // TODO: send to projects module
   },
   { path: '**', component: PageNotFoundComponent }
 ];

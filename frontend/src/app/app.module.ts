@@ -17,6 +17,7 @@ import { ComponentsModule } from './shared/components';
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
 import { ProjectsComponent } from './projects';
+import { TimesheetsComponent } from './projects/timesheets/timesheets.component';
 
 import { LogInService } from './shared/services/login.service';
 import { ProjectService } from './shared/services/project.service';
@@ -40,7 +41,8 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    TimesheetsComponent
   ],
   imports: [
     BrowserModule,

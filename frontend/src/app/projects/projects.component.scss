@@ -10,11 +10,20 @@
     max-width: 250px;
     @include materialCardShadow;
     .title {
-      @include primaryFont;
+      position: relative;
       background-color: $secondaryColor;
-      color: $secondaryTextColor;
       padding: 10px;
-      text-align: left;
+      .text {
+        @include primaryFont;
+        color: $secondaryTextColor;
+        text-align: left;
+      }
+      .icon {
+        cursor: pointer;
+        position: absolute;
+        top: 7px;
+        right: 5px;
+      }
     }
     .info-box {
       padding: 10px;

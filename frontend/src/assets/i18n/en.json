@@ -9,5 +9,8 @@
   "header.profile.title": "Profile",
   "header.profile.cv.title": "CV",
   "header.profile.invoicing.title": "Invoicing",
-  "header.profile.banking.title": "Banking"
+  "header.profile.banking.title": "Banking",
+
+  "project.menu.timesheet": "Timesheet",
+  "project.menu.invoice": "Invoice"
 }

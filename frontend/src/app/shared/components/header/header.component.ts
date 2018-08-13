@@ -12,7 +12,7 @@ export class HeaderComponent {
   public constructor(private router: Router) {}
 
   public goTo(route: string): void {
-    this.router.navigate(['projects']);
+    this.router.navigate([route]);
   }
 
 }
