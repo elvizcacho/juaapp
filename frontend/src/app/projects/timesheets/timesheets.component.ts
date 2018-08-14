@@ -28,13 +28,13 @@ export class TimesheetsComponent {
   }
 
 
-  public displayedColumns: string[] = ['from', 'to', 'hours', 'status'];
+  public displayedColumns: string[] = ['checkIn', 'checkOut', 'hours', 'status'];
 
   public tableDataSource: Timesheet[] = [
-    { id: 1,  from: new Date(), to: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()},
-    { id: 2,  from: new Date(), to: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()},
-    { id: 3,  from: new Date(), to: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()},
-    { id: 4,  from: new Date(), to: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()}
+    { id: 1,  checkIn: new Date(), checkOut: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()},
+    { id: 2,  checkIn: new Date(), checkOut: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()},
+    { id: 3,  checkIn: new Date(), checkOut: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()},
+    { id: 4,  checkIn: new Date(), checkOut: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()}
   ]
 
 

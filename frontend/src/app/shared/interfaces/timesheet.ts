@@ -1,7 +1,7 @@
 export interface Timesheet {
   id: number;
-  from: Date;
-  to: Date;
+  checkIn: Date;
+  checkOut: Date;
   hours: number;
   status: string;
   createdAt: Date;
