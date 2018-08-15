@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../../shared/services/project.service';
-import { Timesheet, Project } from '../../shared/interfaces';
+import { TimesheetService } from '../../shared/services/timesheet.service';
+import { Project, TimesheetEntry } from '../../shared/interfaces';
 
 @Component({
   selector: 'j-projects',
@@ -12,30 +13,38 @@ import { Timesheet, Project } from '../../shared/interfaces';
 export class TimesheetsComponent {
 
   public project: Project;
+  public displayedColumns: string[] = ['date', 'checkIn', 'checkOut', 'hours', 'comments'];
+  public tableDataSource: TimesheetEntry[] = [];
 
   constructor(
     private projectService: ProjectService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private timesheetService: TimesheetService
   ) {
 
     this.route.params.subscribe(params => {
+
        const projectId = params['projectId'];
+
        projectService
         .getProjectById(projectId)
         .subscribe(project => this.project = project);
+
     });
 
   }
 
+  public createOrSeeTimesheet(timesheetId?: string): void {
+    if (timesheetId) {
+      this.timesheetService
+        .getUserTimesheetEntriesByTimesheetId(timesheetId)
+        .subscribe(timesheetEntries => this.tableDataSource = timesheetEntries);
+    }
 
-  public displayedColumns: string[] = ['checkIn', 'checkOut', 'hours', 'status'];
+  }
 
-  public tableDataSource: Timesheet[] = [
-    { id: 1,  checkIn: new Date(), checkOut: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()},
-    { id: 2,  checkIn: new Date(), checkOut: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()},
-    { id: 3,  checkIn: new Date(), checkOut: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()},
-    { id: 4,  checkIn: new Date(), checkOut: new Date(), hours: 160, status: 'Received',  createdAt: new Date(), updatedAt: new Date()}
-  ]
+
+
 
 
 }

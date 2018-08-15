@@ -21,6 +21,7 @@ import { TimesheetsComponent } from './projects/timesheets/timesheets.component'
 
 import { LogInService } from './shared/services/login.service';
 import { ProjectService } from './shared/services/project.service';
+import { TimesheetService } from './shared/services/timesheet.service';
 
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -66,7 +67,8 @@ export function createTranslateLoader(http: HttpClient) {
     httpInterceptorProviders,
     LogInService,
     AuthGuard,
-    ProjectService
+    ProjectService,
+    TimesheetService
   ],
   bootstrap: [AppComponent]
 })

@@ -4,31 +4,38 @@
 
 <div class="content-container">
 
-  <mat-form-field>
+  <mat-form-field *ngIf="project">
     <mat-select placeholder="Choose Period">
-      <mat-option *ngFor="let period of project.periods" [value]="period">
-        {{ period | date: 'MMMM-yyyy' }}
+      <mat-option *ngFor="let period of project.periods" [value]="period.date" (click)="createOrSeeTimesheet(period.id)">
+        <mat-icon class="icon">
+          {{ (period.status === 'open') ? 'add_circle_outline' : 'done' }}
+        </mat-icon>
+        <span>{{ period.date | date: 'MMMM-yyyy' }}</span>
       </mat-option>
     </mat-select>
   </mat-form-field>
 
 
   <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Day </th>
+      <td mat-cell *matCellDef="let element"> {{ element.date | date:'mediumDate' }} </td>
+    </ng-container>
     <ng-container matColumnDef="checkIn">
       <th mat-header-cell *matHeaderCellDef> From </th>
-      <td mat-cell *matCellDef="let element"> {{element.checkIn | date:'mediumDate'}} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.checkIn | date:'mediumDate' }} </td>
     </ng-container>
     <ng-container matColumnDef="checkOut">
       <th mat-header-cell *matHeaderCellDef> To </th>
-      <td mat-cell *matCellDef="let element"> {{element.checkOut | date:'mediumDate'}} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.checkOut | date:'mediumDate' }} </td>
     </ng-container>
     <ng-container matColumnDef="hours">
       <th mat-header-cell *matHeaderCellDef> Hours </th>
-      <td mat-cell *matCellDef="let element"> {{element.hours}} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.hours }} </td>
     </ng-container>
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Signed </th>
-      <td mat-cell *matCellDef="let element"> {{element.signed}} </td>
+    <ng-container matColumnDef="comments">
+      <th mat-header-cell *matHeaderCellDef> Comments </th>
+      <td mat-cell *matCellDef="let element"> {{ element.comments }} </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

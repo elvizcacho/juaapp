@@ -16,16 +16,16 @@ function getUserProjects(req, res) {
 }
 
 function getUserProjectById(req, res) {
+  
   const user = new User(req.user);
+  
   user.getProjects({ where: {id: req.params.projectId }})
   .then(projects => {
-    projects = projects.map(project => {
-      delete project.dataValues.UserProject;
-      project.dataValues.periods = project.getPeriods();
-      return project;
-    });
-    res.send(projects[0]);
-  });
+    const project = projects[0];
+    delete project.dataValues.UserProject;
+    return project.addPeriods();
+  })
+  .then(projectWithPeriods => res.send(projectWithPeriods));
 }
 
 module.exports.getUserProjects = getUserProjects;
