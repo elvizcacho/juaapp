@@ -1,3 +1,5 @@
+import { TimesheetEntry } from './timesheetEntry';
+
 export interface Timesheet {
   id: number;
   ProjectId: number;
@@ -7,4 +9,5 @@ export interface Timesheet {
   status: string;
   createdAt: Date;
   updatedAt: Date;
+  entries: TimesheetEntry[];
 }

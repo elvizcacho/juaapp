@@ -8,7 +8,6 @@
   .project {
     border: 1px solid $secondaryColor;
     max-width: 250px;
-    @include materialCardShadow;
     .title {
       position: relative;
       background-color: $secondaryColor;

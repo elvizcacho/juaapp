@@ -6,7 +6,7 @@
 
   <mat-form-field *ngIf="project">
     <mat-select placeholder="Choose Period">
-      <mat-option *ngFor="let period of project.periods" [value]="period.date" (click)="createOrSeeTimesheet(period.id)">
+      <mat-option *ngFor="let period of project.periods" [value]="period.date" (click)="(period.id) ? seeTimesheet(period.id) : createTimeSheet(period.date)">
         <mat-icon class="icon">
           {{ (period.status === 'open') ? 'add_circle_outline' : 'done' }}
         </mat-icon>
@@ -15,30 +15,48 @@
     </mat-select>
   </mat-form-field>
 
+  <div *ngIf="timesheet">
 
-  <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef> Day </th>
-      <td mat-cell *matCellDef="let element"> {{ element.date | date:'mediumDate' }} </td>
-    </ng-container>
-    <ng-container matColumnDef="checkIn">
-      <th mat-header-cell *matHeaderCellDef> From </th>
-      <td mat-cell *matCellDef="let element"> {{ element.checkIn | date:'mediumDate' }} </td>
-    </ng-container>
-    <ng-container matColumnDef="checkOut">
-      <th mat-header-cell *matHeaderCellDef> To </th>
-      <td mat-cell *matCellDef="let element"> {{ element.checkOut | date:'mediumDate' }} </td>
-    </ng-container>
-    <ng-container matColumnDef="hours">
-      <th mat-header-cell *matHeaderCellDef> Hours </th>
-      <td mat-cell *matCellDef="let element"> {{ element.hours }} </td>
-    </ng-container>
-    <ng-container matColumnDef="comments">
-      <th mat-header-cell *matHeaderCellDef> Comments </th>
-      <td mat-cell *matCellDef="let element"> {{ element.comments }} </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+    <mat-card class="timesheet-info mat-elevation-z8">
+      <div class="item">
+        <span class="label">Total hours:</span>
+        <span class="value">{{timesheet.hours}}</span>
+      </div>
+    </mat-card>
 
+    <table class="table mat-elevation-z8">
+      <tr>
+        <th>Day</th>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>{{ timesheet.status === 'closed' ? 'Hours' : 'Pause (min)' }}</th>
+        <th>Comments</th>
+      </tr>
+      <ng-container *ngIf="timesheet.status === 'closed'">
+        <tr class="readable" *ngFor="let entry of timesheet.entries">
+          <td>{{ entry.date | date:'d' }}</td>
+          <td>{{ entry.checkIn | date:'HH:mm' }}</td>
+          <td>{{ entry.checkOut | date:'HH:mm' }}</td>
+          <td>{{ entry.hours }}</td>
+          <td>{{ entry.comments }}</td>
+        </tr>
+      </ng-container>
+      <ng-container *ngIf="timesheet.status === 'open'">
+        <tr class="editable" *ngFor="let entry of timesheet.entries">
+          <td>{{ entry.date | date:'d' }}</td>
+          <td>
+            <input matInput type="time" [(ngModel)]="entry.checkIn"/>
+          </td>
+          <td>
+            <input matInput type="time" [(ngModel)]="entry.checkOut"/>
+          </td>
+          <td>
+            <input matInput type="number" min="0" step="1" [(ngModel)]="entry.pause"/>
+          </td>
+          <td><textarea matInput [(ngModel)]="entry.comments"></textarea></td>
+        </tr>
+      </ng-container>
+    </table>
+    <button *ngIf="timesheet.status === 'open'" mat-raised-button class="save-button" (click)="saveTimesheet(timesheet)">Save</button>
+  </div>
 </div>

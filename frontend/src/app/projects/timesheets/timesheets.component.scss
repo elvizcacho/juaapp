@@ -4,4 +4,46 @@
 .content-container {
   max-width: 1170px;
   margin: 50px auto;
+
+  .timesheet-info {
+    margin-bottom: 20px;
+    .label {
+      font-weight: bold;
+      @include primaryFont;
+      margin-right: 5px;
+    }
+    .value {
+      @include primaryFont;
+    }
+  }
+
+  .table {
+    width: 100%;
+    @include primaryFont;
+    border-spacing: 1px;
+    border-color: black;
+    tr {
+      th,td {
+        padding: 5px 5px;
+      }
+      &.readable {
+        text-align: center;
+        &:nth-child(even) {
+          background-color: $evenRowColor;
+        }
+      }
+      &.editable {
+        background-color: $evenRowColor;
+        text-align: center;
+        input, textarea {
+          background-color: $primaryTextColor;
+        }
+      }
+
+    }
+  }
+
+  .save-button {
+    margin-top: 20px;
+  }
 }
