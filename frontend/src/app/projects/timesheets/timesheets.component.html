@@ -1,7 +1,4 @@
 
-
-
-
 <div class="content-container">
 
   <mat-form-field *ngIf="project">
@@ -58,5 +55,7 @@
       </ng-container>
     </table>
     <button *ngIf="timesheet.status === 'open'" mat-raised-button class="save-button" (click)="saveTimesheet(timesheet)">Save</button>
+    <button *ngIf="timesheet.status === 'open'" mat-raised-button class="close-button" (click)="closeTimesheet(timesheet.id)">Close</button>
+    <button *ngIf="timesheet.status === 'closed'" mat-raised-button class="save-button" (click)="exportAsPDF(timesheet.id)">Export as PDF</button>
   </div>
 </div>

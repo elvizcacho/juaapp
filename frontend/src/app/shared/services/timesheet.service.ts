@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { ResponseContentType } from '@angular/http';
 import { LocalStorage } from 'ngx-webstorage';
 import { Timesheet } from '../interfaces';
 
@@ -24,6 +25,35 @@ export class TimesheetService {
 
     public updateTimesheet(timesheet: Timesheet): Observable<Timesheet> {
         return this.http.put(this.TIMESHEET_URL.replace(':timesheetId', timesheet.id.toString()), timesheet) as Observable<Timesheet>;
+    }
+
+    public closeTimesheet(timesheetId: number): Observable<Timesheet> {
+        return this.http.put(this.TIMESHEET_URL.replace(':timesheetId', timesheetId.toString()) + '/close', {}) as Observable<Timesheet>;
+    }
+
+    public exportAsPDF(timesheetId: number): any {
+        return this.http
+                    .post(this.TIMESHEET_URL.replace(':timesheetId', timesheetId.toString()) + '/pdf', {}, {
+                      headers: new HttpHeaders({
+                        'Content-Type': 'application/octet-stream',
+                      }),
+                      responseType: 'blob',
+                      observe: 'body'
+                    })
+                    .subscribe(data => this.downloadFile(data));
+    }
+
+    private downloadFile(data) {
+      console.log('start download:',data);
+      var url = window.URL.createObjectURL(data);
+      var a = document.createElement('a');
+      document.body.appendChild(a);
+      a.setAttribute('style', 'display: none');
+      a.href = url;
+      a.download = 'out.pdf';
+      a.click();
+      window.URL.revokeObjectURL(url);
+      a.remove(); // remove the element
     }
 
 }

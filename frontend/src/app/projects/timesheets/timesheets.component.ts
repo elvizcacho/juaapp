@@ -72,6 +72,18 @@ export class TimesheetsComponent {
       });
   }
 
+  public closeTimesheet(timesheetId: number): void {
+    this.timesheetService
+      .closeTimesheet(timesheetId)
+      .subscribe((timesheet: Timesheet) => {
+        this.setTimesheet(timesheet);
+      });
+  }
+
+  public exportAsPDF(timesheetId: number): void {
+    this.timesheetService.exportAsPDF(timesheetId);
+  }
+
   private turnTimeIntoDate(referenceDate, time: string): string {
     const date = moment(referenceDate);
     const result = this.getHourAndMinutesAsArray(time);
@@ -100,24 +112,30 @@ export class TimesheetsComponent {
   }
 
   private setTimesheet(timesheet: Timesheet): void {
+
     this.timesheet = timesheet;
     this.timesheet.hours = this.timesheet.entries.reduce((acum, timesheetEntry) => {
       acum += timesheetEntry.hours;
       return acum;
     }, 0);
-    this.timesheet.entries = this.timesheet.entries.map(entry => {
-      if (!entry.id) {
+
+    if (this.timesheet.status === 'open') {
+      this.timesheet.entries = this.timesheet.entries.map(entry => {
+
+        if (!entry.id) {
+          return entry;
+        }
+
+        const checkIn = moment(entry.checkIn);
+        const checkOut = moment(entry.checkOut);
+
+        entry.checkIn = checkIn.format('HH:mm');
+        entry.checkOut = checkOut.format('HH:mm');
+
         return entry;
-      }
-      const checkIn = new Date(entry.checkIn);
-      const checkOut = new Date(entry.checkOut);
 
-      entry.checkIn = `${checkIn.getHours() < 10 ? '0' + checkIn.getHours() : checkIn.getHours()}:${checkIn.getMinutes() < 10 ? '0' + checkIn.getMinutes(): checkIn.getMinutes()}`;
-      entry.checkOut = `${checkOut.getHours() < 10 ? '0' + checkOut.getHours() : checkOut.getHours()}:${checkOut.getMinutes() < 10 ? '0' + checkOut.getMinutes(): checkOut.getMinutes()}`;
-
-      return entry;
-
-    });
+      });
+    }
 
   }
 

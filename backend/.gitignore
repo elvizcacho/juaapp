@@ -2,6 +2,9 @@
 # dependencies
 /node_modules
 
+# temp files
+/pdfs/temp
+
 # IDEs and editors
 /.idea
 .project

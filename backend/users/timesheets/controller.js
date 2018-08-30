@@ -4,6 +4,8 @@ const Timesheet = require('../../db/models').Timesheet;
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const moment = require('moment');
+const fs = require('fs');
+const pdf = require('html-pdf');
 
 function getUserTimesheetsByProjectId(req, res) {
   
@@ -66,7 +68,6 @@ function createTimeSheetByMonthDate(req, res) {
     req.params.timesheetId = timesheet.id;
     getUserTimesheetByTimesheetId(req, res);
   });
-  
 }
 
 function updateUserTimesheetByTimesheetId(req, res) {
@@ -85,9 +86,36 @@ function updateUserTimesheetByTimesheetId(req, res) {
   
 }
 
+function closeTimesheetByTimesheetId(req, res) {
+  Timesheet.findById(req.params.timesheetId)
+  .then(timesheet => {
+    timesheet.status = 'closed';
+    return timesheet.save();
+  })
+  .then(timesheet => {
+    getUserTimesheetByTimesheetId(req, res);
+  })
+}
+
+function exportTimesheetAsPDFByTimesheetId(req, res) {
+  Timesheet.findById(req.params.timesheetId)
+  .then(timesheet => {
+    // create a document and pipe to a blob
+    var html = fs.readFileSync('/usr/src/app/pdfs/templates/test.html', 'utf8');
+    var options = { format: 'Letter' };
+    pdf.create(html, options).toFile('/usr/src/app/pdfs/temp/test.pdf', function(err, response) {
+      if (err) return console.log(err);
+      res.sendFile(response.filename);
+    });
+    
+    
+  });
+}
 
 
 module.exports.getUserTimesheetsByProjectId = getUserTimesheetsByProjectId;
 module.exports.getUserTimesheetByTimesheetId = getUserTimesheetByTimesheetId;
 module.exports.createTimeSheetByMonthDate = createTimeSheetByMonthDate;
 module.exports.updateUserTimesheetByTimesheetId = updateUserTimesheetByTimesheetId;
+module.exports.closeTimesheetByTimesheetId = closeTimesheetByTimesheetId;
+module.exports.exportTimesheetAsPDFByTimesheetId = exportTimesheetAsPDFByTimesheetId;
