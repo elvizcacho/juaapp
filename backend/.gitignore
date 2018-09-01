@@ -3,7 +3,7 @@
 /node_modules
 
 # temp files
-/pdfs/temp
+/pdfs/temp/*
 
 # IDEs and editors
 /.idea
@@ -25,4 +25,4 @@
 .DS_Store
 Thumbs.db
 
-.nightmare.js
+nightmare.js
