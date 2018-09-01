@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   Project.associate = function(models) {
     models.Project.belongsToMany(models.User, {through: 'UserProject'});
     models.Project.hasMany(models.Timesheet);
+    models.Project.belongsTo(models.Client);
   };
   
   Project.prototype.addPeriods = function () {

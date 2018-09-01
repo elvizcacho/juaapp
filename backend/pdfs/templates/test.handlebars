@@ -1,0 +1,205 @@
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>Test</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>/*FLEX CAN NOT BE USED SINCE IT'S NOT SUPPORTED BY PHANTOMJS*/
+    
+      * {
+        box-sizing:border-box;
+      }
+      
+      body {
+        background: #FFF; /*changes to 666 to easily edit*/
+        font-family: 'Roboto', sans-serif;
+      }
+      
+      .page {
+        width: 612px; /*legal dimensions*/
+        height: 980px;
+        background-color: #FFF;
+        padding: 20px;
+      }
+      
+      .page .title {
+        text-align: center;
+        
+      }
+      .page .info {
+        
+      }
+      .page .info .left {
+        float: left;
+        width: 50%;
+      }
+      
+      .page .info .left .info-provider {
+        width: 300px;
+        font-size: 12px;
+      }
+      .page .info .right {
+        float: left;
+        width: 50%;
+      }
+      .clear {
+        clear: both;
+      }
+      .page .info .right .logo {
+        /*background-image: url('');*/
+        height: 100px;
+        border: 1px solid black;
+        width: 250px;
+      }
+      .page .info .right .info-client {
+        width: 300px;
+        font-size: 12px;
+      }
+      
+      .page .timesheet {
+        margin-top: 30px;
+      }
+      
+      .page .timesheet .table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      
+      .page .timesheet .table tr {
+        border: 1px solid black;
+      }
+      
+      .page .timesheet .table td,th {
+        border-right: 1px solid black;
+        text-align: center;
+      }
+      
+      .page .total .table {
+        margin: auto;
+        width: 200px;
+        margin-top: 20px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      
+      .page .total .table tr {
+        border: 1px solid black;
+      }
+    
+      .page .signatures {
+        margin-top: 40px;
+        font-size: 12px;
+      }
+      
+      .page .signatures .signature.client {
+        float: left;
+      }
+      .page .signatures .signature.supervisor {
+        float: right;
+      }
+      
+    </style>
+    
+  </head>
+  <body>
+    
+    <div class="page">
+      <h1 class="title">Tätigkeitsnachweis</h1>
+      <div class="info">
+        <div class="left">
+          <table class="info-provider">
+            <tr>
+              <td class="label">Mitarbeiter:</td>
+              <td class="value">{{freelancer.firstName}} {{freelancer.lastName}}</td> 
+            </tr>
+            <tr>
+              <td class="label">Firma:</td>
+              <td class="value">Juan Vizcaino</td>
+            </tr>
+            <tr>
+              <td class="label">Projektbezeichnung:</td>
+              <td class="value">{{project.name}}</td> 
+            </tr>
+            <tr>
+              <td class="label">Ansprechpartner:</td>
+              <td class="value">Juan Vizcaino</td> 
+            </tr>
+            <tr>
+              <td class="label"><br></td>
+              <td class="value"><br></td> 
+            </tr>
+            <tr>
+              <td class="label">Berichtsmonat:</td>
+              <td class="value">{{month}}</td> 
+            </tr>
+            <tr>
+              <td class="label">Datum:</td>
+              <td class="value">{{date}}</td> 
+            </tr>
+          </table>
+        </div>
+        <div class="right">
+          <div class="logo"></div>
+          <table class="info-client">
+            <tr>
+              <td class="label">Kunde:</td>
+              <td class="value">{{project.Client.name}}</td> 
+            </tr>
+            <tr>
+              <td class="label">Leistungsort:</td>
+              <td class="value">Remote</td> 
+            </tr>
+          </table>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="timesheet">
+        <table style="width:100%" class="table">
+            <tr>
+              <th>Tag, Datum</th>
+              <th>von (hh:mm)</th> 
+              <th>bis (hh:mm)</th>
+              <th>Pausen</th>
+              <th>Stunden</th>
+              <th>Tätigkeit</th>
+            </tr>
+          {{#each entries}}  
+            <tr>
+              <td>{{this.date}}</td>
+              <td>{{this.checkIn}}</td>
+              <td>{{this.checkOut}}</td>
+              <td>{{this.pause}}</td>
+              <td>{{this.hours}}</td>
+              <td>{{this.comments}}</td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+      <div class="total">
+        <table class="table">
+          <tr>
+            <td>Gesamt</td>
+            <td>{{totalHours}}</td> 
+          </tr>
+          <tr>
+            <td>Stunde pro Tag</td>
+            <td>{{avgHoursProTag}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="signatures">
+        <div class="signature client">
+          <span>Unterschrift Kunde:</span>
+          <span>___________________</span>
+        </div>
+        <div class="signature supervisor">
+          <span>Unterschrift Supervisor:</span>
+          <span>___________________</span>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    
+  </body>
+</html>

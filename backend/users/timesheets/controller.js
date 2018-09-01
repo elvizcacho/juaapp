@@ -1,11 +1,14 @@
 const User = require('../../db/models').User;
+const Client = require('../../db/models').Client;
 const TimesheetEntry = require('../../db/models').TimesheetEntry;
 const Timesheet = require('../../db/models').Timesheet;
+const Project = require('../../db/models').Project;
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const moment = require('moment');
 const fs = require('fs');
 const pdf = require('html-pdf');
+const Handlebars = require('handlebars');
 
 function getUserTimesheetsByProjectId(req, res) {
   
@@ -21,7 +24,7 @@ function getUserTimesheetsByProjectId(req, res) {
 
 function getUserTimesheetByTimesheetId(req, res) {
   // TODO: add user association to timesheets and timesheetEntries
-  Timesheet.findById(req.params.timesheetId)
+  return Timesheet.findById(req.params.timesheetId)
   .then(timesheet => {
     const from = moment(timesheet.from);
     const to = moment(timesheet.to);
@@ -39,7 +42,7 @@ function getUserTimesheetByTimesheetId(req, res) {
         comments: null
       });
     }
-    timesheet.getTimesheetEntries()
+    return timesheet.getTimesheetEntries({raw: true})
     .then(timeSheetEntries => {
       timeSheetEntriesSquema = timeSheetEntriesSquema.map(timeSheetEntrySquema => {
         const timeSheetEntryToBeMerged = timeSheetEntries.find(timeSheetEntry => moment(timeSheetEntry.date).isSame(timeSheetEntrySquema.date))
@@ -49,6 +52,9 @@ function getUserTimesheetByTimesheetId(req, res) {
         return timeSheetEntrySquema;
       })
       timesheet.dataValues.entries = timeSheetEntriesSquema;
+      if (req.internal) {
+        return timesheet;
+      }
       res.send(timesheet);
     });
   });
@@ -97,19 +103,63 @@ function closeTimesheetByTimesheetId(req, res) {
   })
 }
 
+function formatEntriesForPdf(entry) {
+  if (moment(entry.date).isValid()) entry.date = moment(entry.date).format('DD.MM.YYYY'); // TODO: format must be set by client
+  if (moment(entry.checkIn).isValid()) entry.checkIn = moment(entry.checkIn).format('HH:mm');
+  if (moment(entry.checkOut).isValid()) entry.checkOut = moment(entry.checkOut).format('HH:mm');
+  return entry;
+}
+
+function formatTimesheetForPdf(timesheet, user) {
+  // format entries
+  
+  timesheet.entries.map(formatEntriesForPdf);
+  timesheet.totalHours = timesheet.entries.reduce((acum , entry) => {
+    acum += entry.hours;
+    return acum;
+  }, 0);
+  timesheet.avgHoursProTag = timesheet.totalHours / timesheet.entries.filter(entry => entry.id).length; // TODO: modify this for multiple entries per day
+  timesheet.date = moment().format('DD.MM.YYYY'); // TODO: format must be set by client
+  timesheet.month = moment(timesheet.from).format('DD-YYYY');
+  return Project.findOne({
+    where: {
+      id: timesheet.ProjectId
+    },
+    include: [ 
+      { 
+        model: Client,
+        attributes: ['name']
+      }
+    ]
+  })
+  .then(project => {
+    timesheet.project = project.dataValues;
+    timesheet.project.Client = timesheet.project.Client.toJSON();
+    timesheet.freelancer = {firstName: user.firstName, lastName: user.lastName};
+    return timesheet;
+  });
+  
+}
+
 function exportTimesheetAsPDFByTimesheetId(req, res) {
-  Timesheet.findById(req.params.timesheetId)
+  req.internal = true;
+  getUserTimesheetByTimesheetId(req, res)
+  .then(timesheet => formatTimesheetForPdf(timesheet.dataValues, req.user))
   .then(timesheet => {
     // create a document and pipe to a blob
-    var html = fs.readFileSync('/usr/src/app/pdfs/templates/test.html', 'utf8');
-    var options = { format: 'Letter' };
+    const source = fs.readFileSync('/usr/src/app/pdfs/templates/test.handlebars', 'utf8');
+    const template = Handlebars.compile(source);
+    const html = template(timesheet);
+    const options = {
+      format: 'Legal',
+      orientation: 'portrait'
+    };
     pdf.create(html, options).toFile('/usr/src/app/pdfs/temp/test.pdf', function(err, response) {
       if (err) return console.log(err);
       res.sendFile(response.filename);
     });
-    
-    
   });
+  
 }
 
 

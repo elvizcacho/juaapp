@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING
   }, {});
   Client.associate = function(models) {
-    // associations can be defined here
+    Client.hasMany(models.Project);
   };
   return Client;
 };
