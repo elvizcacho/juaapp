@@ -1,0 +1,265 @@
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>Test</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>/*FLEX CAN NOT BE USED SINCE IT'S NOT SUPPORTED BY PHANTOMJS*/
+    
+      * {
+        box-sizing:border-box;
+      }
+      
+      body {
+        background: #666; /*changes to 666 to easily edit*/
+        font-family: 'Roboto', sans-serif;
+      }
+      
+      .page {
+        width: 612px; /*legal dimensions*/
+        height: 980px;
+        background-color: #FFF;
+        padding: 20px;
+      }
+      
+      .page .title {
+        text-align: center;
+        color: #534bae;
+        
+      }
+      .page .info {
+        
+      }
+      .page .info .left {
+        float: left;
+        width: 50%;
+      }
+      
+      .page .info .left .info-provider {
+        width: 300px;
+        font-size: 12px;
+      }
+      
+      .page .info .left .info-provider .label {
+        font-weight: bold;
+      }
+      
+      
+      .page .info .right {
+        float: left;
+        width: 50%;
+      }
+      .clear {
+        clear: both;
+      }
+      .page .info .right .logo {
+        /*background-image: url('');*/
+        height: 100px;
+        border: 1px solid black;
+        width: 250px;
+      }
+      .page .info .right .info-client {
+        width: 300px;
+        font-size: 12px;
+      }
+      
+      .page .info .right .info-client .label {
+        font-weight: bold;
+      }
+      
+      .page .main {
+        margin-top: 30px;
+      }
+      
+      .page .main .table {
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      
+      /* row styles */
+      
+      .page .main .table tr {
+        border: 1px solid black;
+      }
+      
+      .page .main .table tr.no-border {
+        border: 0px;
+      }
+      
+      /* column styles */
+      
+      .page .main .table td.info {
+        text-align: left;
+        padding-left: 5px;
+      }
+      
+      .page .main .table td.no-border {
+        border: 0px;
+      }
+      
+      .page .main .table td.border {
+        border: 1px solid black;
+      }
+      .page .main .table td.border-left {
+        border-left: 1px solid black;
+        border-right: 0;
+      }
+      .page .main .table td.border-upsides {
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+      }
+      
+      .page .main .table td,th {
+        border-right: 1px solid black;
+        text-align: center;
+        padding: 5px;
+      }
+      
+      .page .main .table td.label {
+        font-weight: bold;
+        text-align: right;
+      }
+      
+      .page .main .table td.description {
+        text-align: left;
+      }
+      
+      .page .main .table .total {
+        background-color: #534bae;
+        color: #FFF;  
+      }
+      
+      .page .main .table td.light-color-text {
+        color: #534bae;
+        font-weight: bold;
+      }
+      
+      
+    </style>
+    
+  </head>
+  <body>
+    
+    <div class="page">
+      <h1 class="title">Software-Entwickler</h1>
+      <div class="info">
+        <div class="left">
+          <table class="info-provider">
+            <tr>
+              <td class="label">Rechnungsnummer:</td>
+              <td class="value">01082018</td> 
+            </tr>
+            <tr>
+              <td class="label"></td>
+              <td class="value"></td> 
+            </tr>
+            <tr>
+              <td class="label">Adresse:</td>
+              <td class="value">Juan Sebastian <br> Vizcaino Castro</td>
+            </tr>
+            <tr>
+              <td class="label"></td>
+              <td class="value">Sprollstrasse 54</td> 
+            </tr>
+            <tr>
+              <td class="label"></td>
+              <td class="value">70597, Stuttgart</td> 
+            </tr>
+            <tr>
+              <td class="label">Telefonnummer:</td>
+              <td class="value">+491638119175</td> 
+            </tr>
+            <tr>
+              <td class="label">E-mail:</td>
+              <td class="value">elvizcacho@gmail.com</td> 
+            </tr>
+            <tr>
+              <td class="label">USt-IdNr:</td>
+              <td class="value">DE310799763</td> 
+            </tr>
+            <tr>
+              <td class="label">Steuernummer:</td>
+              <td class="value">23/571/00863</td> 
+            </tr>
+          </table>
+        </div>
+        <div class="right">
+          <table class="info-client">
+            <tr>
+              <td class="label">Datum:</td>
+              <td class="value">31.08.18</td> 
+            </tr>
+            <tr>
+              <td class="label"></td>
+              <td class="value"></td> 
+            </tr>
+            <tr>
+              <td class="label">Rechnungsnehmer:</td>
+              <td class="value">K2 Partnering SolutionsDeutschland GmbH</td> 
+            </tr>
+            <tr>
+              <td class="label">Kundenadresse:</td>
+              <td class="value">Schillerstr. 2</td> 
+            </tr>
+            <tr>
+              <td class="label"></td>
+              <td class="value">60313 Frankfurt</td> 
+            </tr>
+          </table>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="main">
+        <table style="width:100%" class="table">
+            <tr>
+              <th>Bechschreibung</th>
+              <th>Stunden</th> 
+              <th>Stundensatz</th>
+              <th>Summe</th>
+            </tr>
+            <tr>
+              <td class="description">Softwareentwicklungsdienste</td>
+              <td>184</td>
+              <td>62</td>
+              <td>11.408,00 €</td>
+            </tr>
+            <tr class="no-border">
+              <td colspan="2" class="no-border"></td>
+              <td class="border-left label">Zwischensumme</td>
+              <td class="">11.408,00 €</td>
+            </tr>
+            <tr class="no-border">
+              <td colspan="2" class="no-border info light-color-text">Sonstige Informationen</td>
+              <td class="border-left label">Steuersatz</td>
+              <td class="">19,00 %</td>
+            </tr>
+            <tr class="no-border">
+              <td colspan="2" class="no-border info">Zahlung durch Überweisung innerhalb</td>
+              <td class="border-left label">Umsatzsteuer</td>
+              <td class="">2.167,52 €</td>
+            </tr>
+            <tr class="no-border">
+              <td colspan="2" class="no-border info">30 Tage wahrscheinlich am 22.09.18 in:</td>
+              <td class="border-left border-upsides label total">Ingezamt</td>
+              <td class="border-upsides total">13.575,52 €</td>
+            </tr>
+            <tr class="no-border">
+              <td colspan="2" class="no-border info">IBAN: DE98100110012629536518</td>
+            </tr>
+            <tr class="no-border">
+              <td colspan="2" class="no-border info">SWIFT-Code: NTSBDEB1XXX</td>
+            </tr>
+            <tr class="no-border">
+              <td colspan="2" class="no-border info">Bankname: N26 Bank</td>
+            </tr>
+            <tr class="no-border">
+              <td colspan="2" class="no-border info">Bankadresse: Klosterstraße 62, 10179 Berlin</td>
+            </tr>
+            <tr class="no-border">
+              <td colspan="2" class="no-border info">Danke für Ihr Vertrauen</td>
+            </tr>
+        </table>
+      </div>
+    </div>
+    
+  </body>
+</html>
