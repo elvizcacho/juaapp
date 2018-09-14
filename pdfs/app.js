@@ -50,6 +50,7 @@ app.post('/:pdfTemplate', bodyParser.json(), (req, res, next) => {
 			res.sendFile(response.filename);
 		});
 	} catch(e) {
+		console.log(e);
 		next(e);
 	};
 });

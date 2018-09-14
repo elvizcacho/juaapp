@@ -26,7 +26,19 @@ module.exports = {
       contactEmail: {
         type: Sequelize.STRING
       },
-      address: {
+      contactPhoneNumber: {
+        type: Sequelize.STRING
+      },
+      street: {
+        type: Sequelize.STRING
+      },
+      houseNumber: {
+        type: Sequelize.STRING
+      },
+      postalCode: {
+        type: Sequelize.STRING
+      },
+      city: {
         type: Sequelize.STRING
       },
       description: {

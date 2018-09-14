@@ -10,7 +10,11 @@ module.exports = {
         paymentMonthDay: 21,
         ClientId: 1,
         contactEmail: 'stefan.selzan@evia.de',
-        address: 'Am Wallgraben 100, 70565, Stuttgart',
+        contactPhoneNumber: '+491638119176',
+        street: 'Am Wallgraben',
+        houseNumber: '100',
+        postalCode: '70565',
+        city: 'Stuttgart',
         description: 'Software development services'
       }], {});
   },

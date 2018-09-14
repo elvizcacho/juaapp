@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     hourlyRate: DataTypes.DECIMAL,
     ClientId: DataTypes.INTEGER,
     contactEmail: DataTypes.STRING,
-    address: DataTypes.STRING,
+    street: DataTypes.STRING,
+    houseNumber: DataTypes.STRING,
+    postalCode: DataTypes.STRING,
+    city: DataTypes.STRING,
     description: DataTypes.STRING,
     paymentMonthDay: DataTypes.INTEGER
   }, {});

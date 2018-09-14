@@ -57,5 +57,6 @@
     <button *ngIf="timesheet.status === 'open'" mat-raised-button class="save-button" (click)="saveTimesheet(timesheet)">Save</button>
     <button *ngIf="timesheet.status === 'open'" mat-raised-button class="close-button" (click)="closeTimesheet(timesheet.id)">Close</button>
     <button *ngIf="timesheet.status === 'closed'" mat-raised-button class="save-button" (click)="exportAsPDF(timesheet.id)">Export as PDF</button>
+    <button *ngIf="timesheet.status === 'closed'" mat-raised-button class="save-button left-space" (click)="getInvoiceAsPDF(timesheet.id)">Get Invoice</button>
   </div>
 </div>

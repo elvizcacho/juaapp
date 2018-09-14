@@ -146,7 +146,7 @@
           <table class="info-provider">
             <tr>
               <td class="label">Rechnungsnummer:</td>
-              <td class="value">01082018</td> 
+              <td class="value">{{invoiceNumber}}</td> 
             </tr>
             <tr>
               <td class="label"></td>
@@ -154,31 +154,31 @@
             </tr>
             <tr>
               <td class="label">Adresse:</td>
-              <td class="value">Juan Sebastian <br> Vizcaino Castro</td>
+              <td class="value">{{user.firstName}} <br> {{user.lastName}}</td>
             </tr>
             <tr>
               <td class="label"></td>
-              <td class="value">Sprollstrasse 54</td> 
+              <td class="value">{{user.address.street}} {{user.address.houseNumber}}</td> 
             </tr>
             <tr>
               <td class="label"></td>
-              <td class="value">70597, Stuttgart</td> 
+              <td class="value">{{user.address.postalCode}}, {{user.address.city}}</td> 
             </tr>
             <tr>
               <td class="label">Telefonnummer:</td>
-              <td class="value">+491638119175</td> 
+              <td class="value">{{user.phoneNumber}}</td> 
             </tr>
             <tr>
               <td class="label">E-mail:</td>
-              <td class="value">elvizcacho@gmail.com</td> 
+              <td class="value">{{user.email}}</td> 
             </tr>
             <tr>
               <td class="label">USt-IdNr:</td>
-              <td class="value">DE310799763</td> 
+              <td class="value">{{user.vatNumber}}</td> 
             </tr>
             <tr>
               <td class="label">Steuernummer:</td>
-              <td class="value">23/571/00863</td> 
+              <td class="value">{{user.taxNumber}}</td> 
             </tr>
           </table>
         </div>
@@ -186,7 +186,7 @@
           <table class="info-client">
             <tr>
               <td class="label">Datum:</td>
-              <td class="value">31.08.18</td> 
+              <td class="value">{{date}}</td> 
             </tr>
             <tr>
               <td class="label"></td>
@@ -194,15 +194,15 @@
             </tr>
             <tr>
               <td class="label">Rechnungsnehmer:</td>
-              <td class="value">K2 Partnering SolutionsDeutschland GmbH</td> 
+              <td class="value">{{client.name}}</td> 
             </tr>
             <tr>
               <td class="label">Kundenadresse:</td>
-              <td class="value">Schillerstr. 2</td> 
+              <td class="value">{{client.address.street}} {{client.address.houseNumber}}</td>
             </tr>
             <tr>
               <td class="label"></td>
-              <td class="value">60313 Frankfurt</td> 
+              <td class="value">{{client.address.postalCode}} {{client.address.city}}</td> 
             </tr>
           </table>
         </div>
@@ -217,42 +217,42 @@
               <th>Summe</th>
             </tr>
             <tr>
-              <td class="description">Softwareentwicklungsdienste</td>
-              <td>184</td>
-              <td>62</td>
-              <td>11.408,00 €</td>
+              <td class="description">{{project.description}}</td>
+              <td>{{result.hours}}</td>
+              <td>{{project.hourlyRate}}</td>
+              <td>{{result.bruto}}</td>
             </tr>
             <tr class="no-border">
               <td colspan="2" class="no-border"></td>
               <td class="border-left label">Zwischensumme</td>
-              <td class="">11.408,00 €</td>
+              <td class="">{{result.net}} €</td>
             </tr>
             <tr class="no-border">
               <td colspan="2" class="no-border info light-color-text">Sonstige Informationen</td>
               <td class="border-left label">Steuersatz</td>
-              <td class="">19,00 %</td>
+              <td class="">{{result.vat}} %</td>
             </tr>
             <tr class="no-border">
               <td colspan="2" class="no-border info">Zahlung durch Überweisung innerhalb</td>
               <td class="border-left label">Umsatzsteuer</td>
-              <td class="">2.167,52 €</td>
+              <td class="">{{result.vatPayment}} €</td>
             </tr>
             <tr class="no-border">
               <td colspan="2" class="no-border info">30 Tage wahrscheinlich am 22.09.18 in:</td>
               <td class="border-left border-upsides label total">Ingezamt</td>
-              <td class="border-upsides total">13.575,52 €</td>
+              <td class="border-upsides total">{{result.bruto}} €</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">IBAN: DE98100110012629536518</td>
+              <td colspan="2" class="no-border info">IBAN: {{user.bank.iban}}</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">SWIFT-Code: NTSBDEB1XXX</td>
+              <td colspan="2" class="no-border info">SWIFT-Code: {{user.bank.swiftCode}}</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">Bankname: N26 Bank</td>
+              <td colspan="2" class="no-border info">Bankname: {{user.bank.name}}</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">Bankadresse: Klosterstraße 62, 10179 Berlin</td>
+              <td colspan="2" class="no-border info">Bankadresse: {{user.bank.address}}</td>
             </tr>
             <tr class="no-border">
               <td colspan="2" class="no-border info">Danke für Ihr Vertrauen</td>

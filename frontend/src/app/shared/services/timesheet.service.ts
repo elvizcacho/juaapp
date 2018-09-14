@@ -11,6 +11,7 @@ export class TimesheetService {
 
     private TIMESHEETS_URL = '/api/user/timesheets';
     private TIMESHEET_URL = '/api/user/timesheets/:timesheetId';
+    private INVOICES_URL = '/api/user/invoices';
 
 
     constructor(private http: HttpClient) {}
@@ -43,8 +44,19 @@ export class TimesheetService {
                     .subscribe(data => this.downloadFile(data));
     }
 
+    public getInvoiceAsPDF(timesheetId: number): any {
+        return this.http
+                    .post(this.INVOICES_URL + '/pdf', {timesheetId}, {
+                      headers: new HttpHeaders({
+                        'Content-Type': 'application/octet-stream',
+                      }),
+                      responseType: 'blob',
+                      observe: 'body'
+                    })
+                    .subscribe(data => this.downloadFile(data));
+    }
+
     private downloadFile(data) {
-      console.log('start download:',data);
       var url = window.URL.createObjectURL(data);
       var a = document.createElement('a');
       document.body.appendChild(a);
@@ -53,7 +65,7 @@ export class TimesheetService {
       a.download = 'out.pdf';
       a.click();
       window.URL.revokeObjectURL(url);
-      a.remove(); // remove the element
+      a.remove();
     }
 
 }

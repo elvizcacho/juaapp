@@ -84,6 +84,10 @@ export class TimesheetsComponent {
     this.timesheetService.exportAsPDF(timesheetId);
   }
 
+  public getInvoiceAsPDF(timesheetId: number): void {
+    this.timesheetService.getInvoiceAsPDF(timesheetId);
+  }
+
   private turnTimeIntoDate(referenceDate, time: string): string {
     const date = moment(referenceDate);
     const result = this.getHourAndMinutesAsArray(time);

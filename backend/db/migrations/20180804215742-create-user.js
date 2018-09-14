@@ -17,7 +17,28 @@ module.exports = {
       lastName: {
         type: Sequelize.STRING
       },
+      phoneNumber: {
+        type: Sequelize.STRING
+      },
       password: {
+        type: Sequelize.STRING
+      },
+      taxNumber: {
+        type: Sequelize.STRING
+      },
+      vatNumber: {
+        type: Sequelize.STRING
+      },
+      iban: {
+        type: Sequelize.STRING
+      },
+      bankName: {
+        type: Sequelize.STRING
+      },
+      bankAddress: {
+        type: Sequelize.STRING
+      },
+      bankSwiftCode: {
         type: Sequelize.STRING
       },
       createdAt: {

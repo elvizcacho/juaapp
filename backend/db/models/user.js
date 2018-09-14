@@ -1,13 +1,24 @@
-'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  var User = sequelize.define('User', {
+  const User = sequelize.define('User', {
     email: DataTypes.STRING,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    street: DataTypes.STRING,
+    houseNumber: DataTypes.STRING,
+    postalCode: DataTypes.STRING,
+    city: DataTypes.STRING,
+    phoneNumber: DataTypes.STRING,
+    taxNumber: DataTypes.STRING,
+    vatNumber: DataTypes.STRING,
+    iban: DataTypes.STRING,
+    bankName: DataTypes.STRING,
+    bankAddress: DataTypes.STRING,
+    bankSwiftCode: DataTypes.STRING
   }, {});
-  User.associate = function(models) {
-    models.User.belongsToMany(models.Project, {through: 'UserProject'});
+  User.associate = (models) => {
+    models.User.belongsToMany(models.Project, {through: 'UserProject'});  
   };
   return User;
 };

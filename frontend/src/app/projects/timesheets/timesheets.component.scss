@@ -45,6 +45,9 @@
 
   .save-button {
     margin-top: 20px;
+    &.left-space {
+      margin-left: 20px;
+    }
   }
 
   .close-button {
