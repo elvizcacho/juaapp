@@ -1,6 +1,11 @@
 
 
 <div class="content-container">
+
+  <div class="option-buttons">
+    <button class="option-button" mat-raised-button (click)="openCreateProjectDialog()">Create</button>
+  </div>
+
   <div class="project mat-elevation-z8" *ngFor="let project of projects">
     <div class="title">
       <span class="text">{{ project.name }}</span>

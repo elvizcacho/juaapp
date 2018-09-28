@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ProjectService } from '../shared/services/project.service';
 import { Project } from '../shared/interfaces';
 import { Router } from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {CreateProjectModal} from './modals/createProject.modal.component';
 
 @Component({
   selector: 'j-projects',
@@ -15,7 +17,8 @@ export class ProjectsComponent {
 
   constructor(
     private projectService: ProjectService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     projectService
       .getProjects()
@@ -24,6 +27,17 @@ export class ProjectsComponent {
 
   public goTo(route: string): void {
     this.router.navigate([route]);
+  }
+
+  public openCreateProjectDialog(): void {
+    const dialogRef = this.dialog.open(CreateProjectModal, {
+      width: '250px',
+      data: {name: 'Juan', animal: 'Panter'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

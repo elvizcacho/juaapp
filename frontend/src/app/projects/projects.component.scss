@@ -5,6 +5,11 @@
   max-width: 1170px;
   margin: 50px auto;
 
+  .option-buttons {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
   .project {
     border: 1px solid $secondaryColor;
     max-width: 250px;
