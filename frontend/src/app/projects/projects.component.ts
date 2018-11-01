@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProjectService } from '../shared/services/project.service';
-import { Project } from '../shared/interfaces';
+import { Project } from './interfaces';
 import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {CreateProjectModal} from './modals/createProject.modal.component';
@@ -37,6 +37,7 @@ export class ProjectsComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      console.log(result);
     });
   }
 

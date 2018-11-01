@@ -1,0 +1,30 @@
+<form class="form">
+  <div class="form-header"></div>
+  <mat-form-field class="form-input">
+    <input matInput type="text" placeholder="Name" name="name" [(ngModel)]="project.name"/>
+  </mat-form-field>
+  <mat-form-field class="form-input">
+    <input matInput [matDatepicker]="startDate" placeholder="Start date" name="startDate" [(ngModel)]="project.startDate">
+    <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+    <mat-datepicker #startDate startView="year" [startAt]="project.startDate"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="form-input">
+    <input matInput [matDatepicker]="endDate" placeholder="End date" name="endDate" [(ngModel)]="project.endDate">
+    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+    <mat-datepicker #endDate startView="year" [startAt]="project.endDate"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="form-input">
+    <input matInput type="number" placeholder="Rate (h)" name="hourlyRate" [(ngModel)]="project.hourlyRate"/>
+  </mat-form-field>
+  <div class="form-header"></div>
+  <mat-form-field class="form-input">
+    <input matInput type="email" placeholder="Contact Email" name="contactEmail" [(ngModel)]="project.contactEmail"/>
+  </mat-form-field>
+  <mat-form-field class="form-input">
+    <input matInput type="text" placeholder="contactEmail" name="contactEmail" [(ngModel)]="project.contactEmail"/>
+  </mat-form-field>
+  <mat-form-field class="form-input">
+  <div class="btn-container">
+    <button type="button" mat-stroked-button color="primary" class="submit-btn" (click)="create(project)">Create</button>
+  </div>
+</form>

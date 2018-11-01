@@ -9,7 +9,9 @@ import {
   MatOptionModule,
   MatSelectModule,
   MatCardModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 export const MATERIAL_MODULES = [
@@ -22,7 +24,9 @@ export const MATERIAL_MODULES = [
   MatOptionModule,
   MatSelectModule,
   MatCardModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ];
 
 @NgModule({

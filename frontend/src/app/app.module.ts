@@ -8,6 +8,9 @@ import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/h
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from './app.material.module';
+import { ProjectsModule } from './projects/projects.module';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { Ng2Webstorage } from 'ngx-webstorage';
 
@@ -16,8 +19,6 @@ import { ComponentsModule } from './shared/components';
 
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
-import { ProjectsComponent } from './projects';
-import { TimesheetsComponent } from './projects/timesheets/timesheets.component';
 
 import { LogInService } from './shared/services/login.service';
 import { ProjectService } from './shared/services/project.service';
@@ -42,8 +43,6 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ProjectsComponent,
-    TimesheetsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +60,8 @@ export function createTranslateLoader(http: HttpClient) {
             useFactory: createTranslateLoader,
             deps: [HttpClient]
         }
-    })
+    }),
+    ProjectsModule
   ],
   providers: [
     httpInterceptorProviders,

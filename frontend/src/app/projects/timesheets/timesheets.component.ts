@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../../shared/services/project.service';
 import { TimesheetService } from '../../shared/services/timesheet.service';
-import { Project, Timesheet, TimesheetEntry } from '../../shared/interfaces';
+import { Project, Timesheet, TimesheetEntry } from '../interfaces';
 import * as moment from 'moment';
 
 @Component({
@@ -148,9 +148,5 @@ export class TimesheetsComponent {
      .getProjectById(this.project.id)
      .subscribe(project => this.project = project);
   }
-
-
-
-
-
+  
 }
