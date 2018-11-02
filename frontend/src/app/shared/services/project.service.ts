@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { LocalStorage } from 'ngx-webstorage';
-import { Project } from '../interfaces';
+import { Project } from '../../projects/interfaces';
 
 @Injectable()
 export class ProjectService {

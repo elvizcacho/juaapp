@@ -31,7 +31,7 @@ export class ProjectsComponent {
 
   public openCreateProjectDialog(): void {
     const dialogRef = this.dialog.open(CreateProjectModal, {
-      width: '250px',
+      width: '500px',
       data: {name: 'Juan', animal: 'Panter'}
     });
 

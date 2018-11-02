@@ -2,8 +2,8 @@
 @import '../../assets/styles/_mixins';
 
 .content-container {
-  max-width: 1170px;
   margin: 50px auto;
+  padding: 0px 50px;
 
   .option-buttons {
     display: flex;

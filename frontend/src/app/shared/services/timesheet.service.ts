@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { ResponseContentType } from '@angular/http';
 import { LocalStorage } from 'ngx-webstorage';
-import { Timesheet } from '../interfaces';
+import { Timesheet } from '../../projects/interfaces';
 
 @Injectable()
 export class TimesheetService {
