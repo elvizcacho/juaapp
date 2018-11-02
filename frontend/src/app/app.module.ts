@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from './app.material.module';
 import { ProjectsModule } from './projects/projects.module';
-
+import { ClientsModule } from './clients/clients.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { Ng2Webstorage } from 'ngx-webstorage';
@@ -23,6 +23,7 @@ import { HomeComponent } from './home';
 import { LogInService } from './shared/services/login.service';
 import { ProjectService } from './shared/services/project.service';
 import { TimesheetService } from './shared/services/timesheet.service';
+import { ClientService } from './shared/services/client.service';
 
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -61,14 +62,16 @@ export function createTranslateLoader(http: HttpClient) {
             deps: [HttpClient]
         }
     }),
-    ProjectsModule
+    ProjectsModule,
+    ClientsModule
   ],
   providers: [
     httpInterceptorProviders,
     LogInService,
     AuthGuard,
     ProjectService,
-    TimesheetService
+    TimesheetService,
+    ClientService
   ],
   bootstrap: [AppComponent]
 })

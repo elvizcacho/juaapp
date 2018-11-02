@@ -1,0 +1,18 @@
+
+
+<table class="table mat-elevation-z8">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Created At</th>
+  </tr>
+  <ng-container>
+    <tr *ngFor="let client of clients">
+      <td>{{ client.name }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.street }} {{ client.houseNumber }} {{ client.postalCode }} {{ client.city }}</td>
+      <td>{{ client.createdAt | date:'mediumDate' }}</td>
+    </tr>
+  </ng-container>
+</table>

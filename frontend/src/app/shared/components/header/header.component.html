@@ -5,6 +5,7 @@
 
   <mat-menu [overlapTrigger]="false" class="menu-suboptions" #menu_freelance="matMenu">
     <button mat-menu-item (click)="goTo('projects')">{{ 'header.freelance.projects.title' | translate }}</button>
+    <button mat-menu-item (click)="goTo('clients')">{{ 'header.freelance.clients.title' | translate }}</button>
   </mat-menu>
   <mat-menu [overlapTrigger]="false" class="menu-suboptions" #menu_accounting="matMenu">
     <button mat-menu-item>{{ 'header.accounting.balance.title' | translate }}</button>
