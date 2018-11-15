@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { ProjectService } from '../shared/services/project.service';
-import { Project } from './interfaces';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {ProjectService} from '../shared/services/project.service';
+import {Project} from './interfaces';
+import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {CreateProjectModal} from './modals/createProject.modal.component';
 
@@ -20,9 +20,8 @@ export class ProjectsComponent {
     private router: Router,
     public dialog: MatDialog
   ) {
-    projectService
-      .getProjects()
-      .subscribe((data: Project[]) => this.projects = data);
+    this.projectService = projectService;
+    this.loadProjects();
   }
 
   public goTo(route: string): void {
@@ -34,11 +33,17 @@ export class ProjectsComponent {
       width: '500px',
       data: {name: 'Juan', animal: 'Panter'}
     });
+    dialogRef.afterClosed().subscribe(result => this.onDialogClosed(result));
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
-    });
+  private loadProjects(): void {
+    this.projectService
+      .getProjects()
+      .subscribe((data: Project[]) => this.projects = data);
+  }
+
+  private onDialogClosed(result): void {
+    this.loadProjects();
   }
 
 }

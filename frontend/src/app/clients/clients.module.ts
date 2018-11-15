@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ClientsComponent } from './clients.component';
-import { AppMaterialModule } from '../app.material.module';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {ClientsComponent} from './clients.component';
+import {AppMaterialModule} from '../app.material.module';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
+import {ProjectsModalsModule} from "../projects/modals/modals.module";
+import {ClientsModalsModule} from "./modals/modals.module";
 
 
 // AoT requires an exported function for factories
@@ -17,6 +19,8 @@ export const CLIENTS_MODULES = [
   CommonModule,
   FormsModule,
   AppMaterialModule,
+  ProjectsModalsModule,
+  ClientsModalsModule
 ];
 
 export const CLIENTS_COMPONENTS = [

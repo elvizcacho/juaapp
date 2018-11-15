@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ModalsModule } from './modals/modals.module';
+import { ProjectsModalsModule } from './modals/modals.module';
 import { ProjectsComponent } from './projects.component';
 import { TimesheetsComponent } from './timesheets/timesheets.component';
 import { AppMaterialModule } from '../app.material.module';
@@ -18,7 +18,7 @@ export function createTranslateLoader(http: HttpClient) {
 export const PROJECT_MODULES = [
   CommonModule,
   FormsModule,
-  ModalsModule,
+  ProjectsModalsModule,
   AppMaterialModule,
 ];
 

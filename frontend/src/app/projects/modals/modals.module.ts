@@ -19,7 +19,7 @@ export const MODALS_MODULES = [
   entryComponents: [...MODALS_COMPONENTS],
   imports: [...MODALS_MODULES],
 })
-export class ModalsModule {
+export class ProjectsModalsModule {
   constructor() {
   }
 }

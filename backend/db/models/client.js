@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Client = sequelize.define('Client', {
+  const Client = sequelize.define('Client', {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     street: DataTypes.STRING,

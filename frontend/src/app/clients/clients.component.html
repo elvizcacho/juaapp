@@ -1,18 +1,25 @@
+<div class="content-container">
 
+  <div class="option-buttons">
+    <button class="option-button" mat-raised-button (click)="openCreateClient()">Create</button>
+  </div>
 
-<table class="table mat-elevation-z8">
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Address</th>
-    <th>Created At</th>
-  </tr>
-  <ng-container>
-    <tr *ngFor="let client of clients">
-      <td>{{ client.name }}</td>
-      <td>{{ client.email }}</td>
-      <td>{{ client.street }} {{ client.houseNumber }} {{ client.postalCode }} {{ client.city }}</td>
-      <td>{{ client.createdAt | date:'mediumDate' }}</td>
+  <table class="table mat-elevation-z8">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Created At</th>
+      <th>Actions</th>
     </tr>
-  </ng-container>
-</table>
+    <ng-container>
+      <tr *ngFor="let client of clients">
+        <td>{{ client.name }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.street }} {{ client.houseNumber }} {{ client.postalCode }} {{ client.city }}</td>
+        <td>{{ client.createdAt | date:'mediumDate' }}</td>
+        <td><mat-icon class="pointer" (click)="onDelete(client.id)">delete</mat-icon></td>
+      </tr>
+    </ng-container>
+  </table>
+</div>

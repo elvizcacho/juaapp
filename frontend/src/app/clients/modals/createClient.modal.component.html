@@ -1,0 +1,30 @@
+<form class="form">
+  <div class="form-header"></div>
+  <div class="row">
+    <mat-form-field class="form-input col1">
+      <input matInput type="text" placeholder="Name" name="name" [(ngModel)]="client.name"/>
+    </mat-form-field>
+    <mat-form-field class="form-input col2">
+      <input matInput type="text" placeholder="Email" name="email" [(ngModel)]="client.email"/>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="form-input col1">
+      <input matInput type="text" placeholder="street" name="street" [(ngModel)]="client.street"/>
+    </mat-form-field>
+    <mat-form-field class="form-input col2">
+      <input matInput type="text" placeholder="houseNumber" name="houseNumber" [(ngModel)]="client.houseNumber"/>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="form-input col1">
+      <input matInput type="text" placeholder="postalCode" name="postalCode" [(ngModel)]="client.postalCode"/>
+    </mat-form-field>
+    <mat-form-field class="form-input col2">
+      <input matInput type="text" placeholder="city" name="city" [(ngModel)]="client.city"/>
+    </mat-form-field>
+  </div>
+  <div class="btn-container">
+    <button type="button" mat-stroked-button color="primary" class="submit-btn" (click)="create(client)">Create</button>
+  </div>
+</form>
