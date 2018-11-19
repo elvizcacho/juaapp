@@ -11,7 +11,8 @@ import {
   MatCardModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatAutocompleteModule
 } from '@angular/material';
 
 export const MATERIAL_MODULES = [
@@ -26,7 +27,8 @@ export const MATERIAL_MODULES = [
   MatCardModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

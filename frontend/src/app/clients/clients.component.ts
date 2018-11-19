@@ -3,7 +3,6 @@ import { ClientService } from '../shared/services/client.service';
 import { Client } from './interfaces';
 import {CreateClientModalComponent} from "./modals/createClient.modal.component";
 import {MatDialog} from "@angular/material";
-import {Project} from "../projects/interfaces";
 
 @Component({
   selector: 'j-clients',

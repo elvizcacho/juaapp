@@ -6,9 +6,10 @@ export interface Project {
   hourlyRate: string;
   ClientId: number;
   contactEmail: string;
-  address: string;
+  street: string;
+  houseNumber: string;
+  postalCode: string;
+  city: string;
   description: string;
-  paymentMonthDay: string;
-  createdAt: Date;
-  updatedAt: Date;
+  paymentMonthDay: number;
 }

@@ -22,4 +22,8 @@ export class ProjectService {
         return this.http.get(`${this.USER_PROJECTS_URL}/${projectId}`) as Observable<Project>;
     }
 
+    public createProject(project: Project): Observable<Project> {
+      return this.http.post(this.USER_PROJECTS_URL, project) as Observable<Project>;
+    }
+
 }

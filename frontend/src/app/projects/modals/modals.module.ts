@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CreateProjectModal } from './createProject.modal.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppMaterialModule } from '../../app.material.module';
 
 export const MODALS_COMPONENTS = [
@@ -11,7 +11,8 @@ export const MODALS_COMPONENTS = [
 export const MODALS_MODULES = [
   CommonModule,
   FormsModule,
-  AppMaterialModule
+  AppMaterialModule,
+  ReactiveFormsModule
 ];
 
 @NgModule({

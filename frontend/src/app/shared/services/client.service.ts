@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { LocalStorage } from 'ngx-webstorage';
+import { HttpClient } from '@angular/common/http';
 import { Client } from '../../clients/interfaces';
 
 @Injectable()

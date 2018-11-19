@@ -17,7 +17,10 @@
       <mat-datepicker #endDate startView="year" [startAt]="project.endDate"></mat-datepicker>
     </mat-form-field>
     <mat-form-field class="form-input col2">
-      <input matInput type="text" placeholder="Client" name="client" [(ngModel)]="project.clientId"/>
+      <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="clientsControl" [matAutocomplete]="auto" [(ngModel)]="project.ClientId">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let client of clients | async" [value]="client.id">{{client.name}}</mat-option>
+      </mat-autocomplete>
     </mat-form-field>
   </div>
   <div class="row">
