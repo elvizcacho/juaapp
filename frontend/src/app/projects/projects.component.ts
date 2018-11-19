@@ -46,4 +46,10 @@ export class ProjectsComponent {
     this.loadProjects();
   }
 
+  delete(projectId: number): void {
+    this.projectService
+      .deleteProjectById(projectId)
+      .subscribe(() => this.loadProjects());
+  }
+
 }

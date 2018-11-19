@@ -26,4 +26,8 @@ export class ProjectService {
       return this.http.post(this.USER_PROJECTS_URL, project) as Observable<Project>;
     }
 
+    public deleteProjectById(projectId: number): Observable<any> {
+      return this.http.delete(`${this.USER_PROJECTS_URL}/${projectId}`);
+    }
+
 }

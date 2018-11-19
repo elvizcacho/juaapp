@@ -13,5 +13,6 @@
   "header.profile.banking.title": "Banking",
 
   "project.menu.timesheet": "Timesheet",
-  "project.menu.invoice": "Invoice"
+  "project.menu.invoice": "Invoice",
+  "project.menu.delete": "Delete"
 }

@@ -19,6 +19,10 @@
           <mat-icon class="icon">add_circle_outline</mat-icon>
           <span>{{ 'project.menu.invoice' | translate }}</span>
         </button>
+        <button mat-menu-item (click)="delete(project.id)">
+          <mat-icon class="icon">delete</mat-icon>
+          <span>{{ 'project.menu.delete' | translate }}</span>
+        </button>
       </mat-menu>
     </div>
     <div class="info-box">
