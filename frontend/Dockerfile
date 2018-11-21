@@ -13,4 +13,4 @@ RUN npm run build
 
 EXPOSE 80
 
-ENTRYPOINT "dev-entrypoint.sh"
+ENTRYPOINT /usr/src/app/entrypoint.sh
