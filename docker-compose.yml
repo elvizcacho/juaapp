@@ -1,7 +1,7 @@
 version: '3.2'
 
 services:
-  
+
   db:
     image: postgres:alpine
     restart: always
@@ -17,7 +17,7 @@ services:
       - ./db/init-scripts:/docker-entrypoint-initdb.d
     networks:
       - app-network
-  
+
   adminer:
     image: adminer
     restart: always
@@ -27,7 +27,7 @@ services:
       - db
     networks:
       - app-network
-  
+
   api:
     build:
       context: ./backend
@@ -47,7 +47,7 @@ services:
       POSTGRES_DB: db_juaapp
       POSTGRES_HOST: db
       JWT_SECRET: 'jugandofuchi'
-  
+
   pdfs:
     build:
       context: ./pdfs
@@ -59,7 +59,7 @@ services:
       - 4100:4100
     networks:
       - app-network
-      
+
   app:
     build:
       context: ./frontend
@@ -71,7 +71,7 @@ services:
       - 3000:80
     networks:
       - app-network
-      
+
   haproxy:
     image: haproxy:1.8.12-alpine
     volumes:
@@ -83,6 +83,6 @@ services:
       - app
     networks:
       - app-network
-            
+
 networks:
-  app-network:      
+  app-network:

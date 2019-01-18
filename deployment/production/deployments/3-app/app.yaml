@@ -1,0 +1,20 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: frontend
+          image: elvizcacho/juaapp-frontend:latest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: regcred

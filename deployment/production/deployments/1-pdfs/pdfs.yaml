@@ -1,0 +1,20 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pdfs-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: pdfs
+    spec:
+      containers:
+        - name: frontend
+          image: elvizcacho/juaapp-pdfs:latest
+          ports:
+            - containerPort: 4100
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: regcred

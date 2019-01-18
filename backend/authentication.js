@@ -11,7 +11,7 @@ passport.use(new LocalStrategy({
         passwordField: 'password'
     }, 
     function (email, password, cb) {
-        
+
         const hashedPassword = crypto.createHash('md5').update(password).digest('hex');
         
         return User.findOne({ 

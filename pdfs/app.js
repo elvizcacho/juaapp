@@ -29,6 +29,9 @@ process.on('uncaughtException', function (err) {
 app.get('/', (req, res, next) => {res.send({ok: 'ok'})});
 
 app.post('/:pdfTemplate', bodyParser.json(), (req, res, next) => {
+	console.log('DU KANNST DU HIER ANFANGEN!');
+	console.log(req.body);
+	console.log('END');
 	try {
 		const source = fs.readFileSync(`/usr/src/app/pdfs/templates/${req.params.pdfTemplate}`, 'utf8');
 		const template = Handlebars.compile(source);

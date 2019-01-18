@@ -1,0 +1,25 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: haproxy-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: haproxy
+    spec:
+      containers:
+        - name: haproxy
+          image: haproxy:1.8.12-alpine
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: config-volume
+              mountPath: /usr/local/etc/haproxy
+      volumes:
+        - name: config-volume
+          configMap:
+            name: haproxy-config

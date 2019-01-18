@@ -1,0 +1,33 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: elvizcacho/juaapp-api:latest
+          env:
+            - name: POSTGRES_USER
+              value: admin
+            - name: POSTGRES_PASSWORD
+              value: adminpassword
+            - name: POSTGRES_DB
+              value: db_juaapp
+            - name: POSTGRES_HOST
+              value: db-service
+            - name: JWT_SECRET
+              value: jugandofuchi
+            - name: PDFS_URL
+              value: pdfs-service:4100
+          ports:
+            - containerPort: 4000
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: regcred

@@ -1,0 +1,20 @@
+{
+  "name": "juaapp-cluster",
+  "version": "1.0.0",
+  "description": "- node v8.11.3   - npm v6.2.0",
+  "main": "index.js",
+  "scripts": {
+    "getLastHash": "git log -1 --pretty=format:\"%H\" | tail -n 1",
+    "buildFrontendImage": "./deployment/build-frontend.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elvizcacho/juaapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elvizcacho/juaapp/issues"
+  },
+  "homepage": "https://github.com/elvizcacho/juaapp#readme"
+}

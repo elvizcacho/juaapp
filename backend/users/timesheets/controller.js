@@ -151,7 +151,8 @@ function exportTimesheetAsPDFByTimesheetId(req, res) {
   getUserTimesheetByTimesheetId(req, res)
     .then(timesheet => formatTimesheetForPdf(timesheet.dataValues, req.user))
     .then(timesheet =>
-      PdfService.getPdf('timesheet.handlebars', timesheet).pipe(res));
+      PdfService.getPdf('timesheet.handlebars', timesheet).pipe(res))
+      .catch(e => console.log(e));
 }
 
 

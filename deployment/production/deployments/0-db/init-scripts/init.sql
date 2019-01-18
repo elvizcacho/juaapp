@@ -1,0 +1,5 @@
+CREATE USER app;
+ALTER USER app WITH encrypted password 'copito';
+CREATE DATABASE db_juaapp;
+GRANT ALL PRIVILEGES ON DATABASE db_juaapp TO admin;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app;

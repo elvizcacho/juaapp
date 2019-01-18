@@ -8,4 +8,4 @@ RUN npm install
 
 EXPOSE 4000
 
-ENTRYPOINT "dev-entrypoint.sh"
+ENTRYPOINT /usr/src/app/entrypoint.sh
