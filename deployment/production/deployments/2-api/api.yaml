@@ -13,6 +13,13 @@ spec:
       containers:
         - name: api
           image: elvizcacho/juaapp-api:latest
+          resources:
+            requests:
+              memory: 50Mi
+              cpu: 25m
+            limits:
+              memory: 100Mi
+              cpu: 50m
           env:
             - name: POSTGRES_USER
               value: admin

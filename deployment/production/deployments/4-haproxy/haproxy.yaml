@@ -13,6 +13,13 @@ spec:
       containers:
         - name: haproxy
           image: haproxy:1.8.12-alpine
+          resources:
+            requests:
+              memory: 50Mi
+              cpu: 25m
+            limits:
+              memory: 100Mi
+              cpu: 50m
           ports:
             - containerPort: 80
           imagePullPolicy: Always
