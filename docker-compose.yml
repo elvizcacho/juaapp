@@ -18,23 +18,13 @@ services:
     networks:
       - app-network
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 3200:8080
-    depends_on:
-      - db
-    networks:
-      - app-network
-
-  api:
+  api-freelancing:
     build:
-      context: ./backend
+      context: ./freelancing/backend
       dockerfile: Dockerfile
     entrypoint: /usr/src/app/dev-entrypoint.sh
     volumes:
-      - ./backend:/usr/src/app
+      - ./freelancing/backend:/usr/src/app
     ports:
       - 4000:4000
     networks:
@@ -69,20 +59,20 @@ services:
       - ./accounting/backend:/usr/src/app
     ports:
       - 4200:4200
+    depends_on:
+      - db
     networks:
       - app-network
 
-  app:
+  app-freelancing:
     build:
-      context: ./frontend
+      context: ./freelancing/frontend
       dockerfile: Dockerfile
     entrypoint: /usr/src/app/dev-entrypoint.sh
     volumes:
-      - ./frontend:/usr/src/app
+      - ./freelancing/frontend:/usr/src/app
     ports:
       - 3000:80
-    environment:
-      PUBLIC_URL: /accounting/
     networks:
       - app-network
 
@@ -95,6 +85,8 @@ services:
       - ./accounting/frontend:/usr/src/app
     ports:
       - 3100:3100
+    environment:
+      PUBLIC_URL: /accounting/
     networks:
       - app-network
 
@@ -105,8 +97,10 @@ services:
     ports:
       - 5000:80
     depends_on:
-      - api
-      - app
+      - api-freelancing
+      - app-freelancing
+      - app-accounting
+      - api-accounting
     networks:
       - app-network
 
