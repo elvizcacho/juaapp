@@ -12,7 +12,9 @@ export class BankEntry {
     @Column()
     public description: string;
 
-    @Column()
+    @Column({
+        nullable: true
+    })
     public category: string;
 
     @Column({

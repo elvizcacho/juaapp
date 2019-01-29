@@ -9,4 +9,5 @@ GRANT ALL PRIVILEGES ON DATABASE db_accounting TO admin;
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_freelancing
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_accounting;
 
-/* TODO:dc Fix the GRAT for app_freelancer and app_accounting and implement in APPS */
+/* TODO: Fix the GRANT for app_freelancer and app_accounting and implement in APPS */
+
