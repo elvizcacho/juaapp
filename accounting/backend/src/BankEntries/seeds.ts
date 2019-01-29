@@ -109,7 +109,7 @@ export function getSeeds() {
     "date": "2018-01-09T00:00:00.000Z",
     "description": "Finanzamt",
     "category": "taxes",
-    "value": "-3204.73"
+    "value": "-320.73"
   }, {
     "date": "2018-01-09T00:00:00.000Z",
     "description": "ARAL STATION 150585164",
