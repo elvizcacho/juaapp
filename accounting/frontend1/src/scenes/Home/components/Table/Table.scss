@@ -1,0 +1,49 @@
+
+.table {
+
+
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+
+    thead {
+        th {
+            border: black 1px solid;
+        }
+        .date {
+            width: 20%;
+            text-align: left ;
+        }
+        .description {
+            width: 50%;
+            text-align: left;
+        }
+        .category {
+            width: 20%;
+            text-align: left;
+        }
+        .value {
+            width: 10%;
+            text-align: left;
+        }
+
+    }
+
+    tbody {
+        td {
+            border: black 1px solid;
+        }
+        .date {
+            text-align: right;
+        }
+        .description {
+            text-align: left;
+        }
+        .category {
+            text-align: left;
+        }
+        .value {
+            text-align: right;
+        }
+    }
+}
