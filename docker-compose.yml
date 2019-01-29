@@ -60,6 +60,18 @@ services:
     networks:
       - app-network
 
+  api-accounting:
+    build:
+      context: ./accounting/backend/
+      dockerfile: Dockerfile
+    entrypoint: /usr/src/app/dev-entrypoint.sh
+    volumes:
+      - ./accounting/backend:/usr/src/app
+    ports:
+      - 4200:4200
+    networks:
+      - app-network
+
   app:
     build:
       context: ./frontend
@@ -69,6 +81,20 @@ services:
       - ./frontend:/usr/src/app
     ports:
       - 3000:80
+    environment:
+      PUBLIC_URL: /accounting/
+    networks:
+      - app-network
+
+  app-accounting:
+    build:
+      context: ./accounting/frontend
+      dockerfile: Dockerfile
+    entrypoint: /usr/src/app/dev-entrypoint.sh
+    volumes:
+      - ./accounting/frontend:/usr/src/app
+    ports:
+      - 3100:3100
     networks:
       - app-network
 

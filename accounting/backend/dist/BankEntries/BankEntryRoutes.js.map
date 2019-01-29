@@ -1,0 +1,1 @@
+{"version":3,"file":"BankEntryRoutes.js","sourceRoot":"","sources":["../../src/BankEntries/BankEntryRoutes.ts"],"names":[],"mappings":";;;;;AACA,gFAAwD;AAExD,MAAM,eAAe;IAIjB,YAAY,GAAwB;QAF7B,wBAAmB,GAAG,IAAI,6BAAmB,EAAE,CAAC;QAGnD,GAAG,CAAC,GAAG,CAAC,UAAU,EAAE,IAAI,CAAC,mBAAmB,CAAC,OAAO,CAAC,CAAC;IAE1D,CAAC;CAEJ;AAED,kBAAe,eAAe,CAAC"}

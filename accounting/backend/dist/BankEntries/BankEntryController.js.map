@@ -1,0 +1,1 @@
+{"version":3,"file":"BankEntryController.js","sourceRoot":"","sources":["../../src/BankEntries/BankEntryController.ts"],"names":[],"mappings":";;AAEA,MAAM,mBAAmB;IAEd,OAAO,CAAC,GAAoB,EAAE,GAAqB;QACtD,GAAG,CAAC,IAAI,CAAE,iBAAiB,CAAE,CAAC;IAClC,CAAC;CAEJ;AAED,kBAAe,mBAAmB,CAAC"}
