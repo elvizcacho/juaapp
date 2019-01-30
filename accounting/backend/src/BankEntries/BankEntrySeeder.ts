@@ -16,7 +16,7 @@ export class BankEntrySeeder {
                 bankEntry.description = seed.description;
                 bankEntry.category = seed.category;
                 bankEntry.value = Number(seed.value);
-                return bankEntry; //.hola
+                return bankEntry;
             })
         )
         console.log('Populating BankEntries done!');
