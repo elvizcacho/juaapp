@@ -17,6 +17,6 @@ const AppRouter = () => (
             <Route path="/users/" component={Users} />
         </div>
     </Router>
-);
+)
 
 export default AppRouter;
