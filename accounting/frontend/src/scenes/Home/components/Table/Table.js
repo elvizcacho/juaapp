@@ -3,7 +3,7 @@ import moment from 'moment'
 import './Table.scss'
 
 
-class Table extends Component {
+export class Table extends Component {
 
     render() {
         return (
@@ -20,10 +20,10 @@ class Table extends Component {
                     {this.props.rows.map(row => {
                         return (
                             <tr key={row.id}>
-                                <td className='date'>{moment(row.date).format('DD.MM.YYYY')}</td>
-                                <td className='description'>{row.description}</td>
-                                <td className='category'>{row.category}</td>
-                                <td className='value'>{row.value}</td>
+                                <td className={`date ${row.selected ? 'selected' : ''}`.trim()}>{moment(row.date).format('DD.MM.YYYY')}</td>
+                                <td className={`description ${row.selected ? 'selected' : ''}`.trim()}>{row.description}</td>
+                                <td className={`category ${row.selected ? 'selected' : ''}`.trim()}>{row.category}</td>
+                                <td className={`value ${row.selected ? 'selected' : ''}`.trim()}>{row.value}</td>
                             </tr>
                         )
                     })}
@@ -33,5 +33,3 @@ class Table extends Component {
     }
 
 }
-
-export default Table

@@ -13,3 +13,11 @@ export function fetchBankEntries(startDate, endDate) {
             .then(bankEntries => dispatch(receiveBankEntries(bankEntries)))
     }
 }
+
+export function selectBankEntryCategory(category, selection) {
+    return {type: types.SELECT_BANK_ENTRY_CATEGORY, category, selection}
+}
+
+export function unselectBankEntryCategory() {
+    return {type: types.UNSELECT_BANK_ENTRY_CATEGORY}
+}

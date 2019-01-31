@@ -9,5 +9,6 @@ export default {
         ["Commute", 2],
         ["Watch TV", 2],
         ["Sleep", 7]
-    ]
+    ],
+    bankEntriesSelectedRow: {}
 }

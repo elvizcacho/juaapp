@@ -26,7 +26,6 @@
             width: 10%;
             text-align: left;
         }
-
     }
 
     tbody {
@@ -44,6 +43,9 @@
         }
         .value {
             text-align: right;
+        }
+        .selected {
+            background-color: aquamarine;
         }
     }
 }
