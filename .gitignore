@@ -21,3 +21,4 @@ Thumbs.db
 
 # DB data
 db/pgdata
+.prod-env
