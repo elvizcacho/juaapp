@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Table} from './components/Table/Table.js'
+import Table from './components/Table/Table.js'
 import './Home.scss'
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux"

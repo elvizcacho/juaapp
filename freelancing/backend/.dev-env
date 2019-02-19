@@ -1,0 +1,4 @@
+JUAAPP_DB_HOST=localhost
+JUAAPP_DB_USER=admin
+JUAAPP_DB_PASSWORD=adminpassword
+JUAAPP_DB_NAME=db

@@ -8,9 +8,10 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: adminpassword
-      POSTGRES_DB: db
+      JUAAPP_DB_HOST: ${JUAAPP_DB_HOST}
+      JUAAPP_DB_USER: ${JUAAPP_DB_USER}
+      JUAAPP_DB_PASSWORD: ${JUAAPP_DB_PASSWORD}
+      JUAAPP_DB_NAME: ${JUAAPP_DB_NAME}
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./db/pgdata:/var/lib/postgresql/data/pgdata

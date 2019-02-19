@@ -1,11 +1,13 @@
 const Sequelize = require('sequelize');
-
+const config = require('../config')
+console.log(config);
+console.log('AQUI')
 const sequelize = new Sequelize(
-    process.env.POSTGRES_DB, 
-    'admin', 
-    'adminpassword', 
+    config.db.db,
+    config.db.user,
+    config.db.password,
     {
-      host: process.env.POSTGRES_HOST,
+      host: config.db.host,
       dialect: 'postgres',
       operatorsAliases: false,
       pool: {

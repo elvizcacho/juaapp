@@ -1,7 +1,10 @@
+@import "../../../../assets/styles/_variables";
+@import "../../../../assets/styles/_mixins";
+
 
 .table {
 
-
+    @include primaryFont;
     width: 100%;
     border-spacing: 0px;
     border-collapse: collapse;

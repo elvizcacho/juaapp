@@ -9,7 +9,6 @@ export class CategoryChart extends Component {
             eventName: 'select',
             callback: ({ chartWrapper }) => {
                 const selection = chartWrapper.getChart().getSelection()
-                console.log({selection})
                 if (selection[0]) {
                     this.props.selectCategory(selection)
                 } else {
