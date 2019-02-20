@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4000;
+const dbConfig = require('./db/database')[process.env.JUAAPP_ENV]
 require('./db/models');
 
 // load authentication
@@ -23,4 +24,7 @@ app.use(function(req, res, next) {
 // load routes
 require('./routes')(app);
 
-app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
+app.listen(PORT, () => {
+	console.log(dbConfig)
+	console.log(`App listening on port ${PORT}`)
+});

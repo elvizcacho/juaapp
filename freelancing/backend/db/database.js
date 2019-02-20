@@ -2,24 +2,27 @@ const fs = require('fs');
 
 module.exports = {
   development: {
-    username: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DB,
-    host: process.env.POSTGRES_HOST,
+    username: process.env.JUAAPP_DB_USER,
+    password: process.env.JUAAPP_DB_PASSWORD,
+    database: process.env.JUAAPP_DB_NAME,
+    host: process.env.JUAAPP_DB_HOST,
+    port: process.env.JUAAPP_DB_PORT,
     dialect: 'postgres'
   },
   test: {
-    username: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DB,
-    host: process.env.POSTGRES_HOST,
+    username: process.env.JUAAPP_DB_USER,
+    password: process.env.JUAAPP_DB_PASSWORD,
+    database: process.env.JUAAPP_DB_NAME,
+    host: process.env.JUAAPP_DB_HOST,
+    port: process.env.JUAAPP_DB_PORT,
     dialect: 'postgres'
   },
   production: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOSTNAME,
+    username: process.env.JUAAPP_DB_USER,
+    password: process.env.JUAAPP_DB_PASSWORD,
+    database: process.env.JUAAPP_DB_NAME,
+    host: process.env.JUAAPP_DB_HOST,
+    port: process.env.JUAAPP_DB_PORT,
     dialect: 'postgres'
   }
 };

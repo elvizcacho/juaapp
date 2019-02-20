@@ -8,10 +8,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      JUAAPP_DB_HOST: ${JUAAPP_DB_HOST}
-      JUAAPP_DB_USER: ${JUAAPP_DB_USER}
-      JUAAPP_DB_PASSWORD: ${JUAAPP_DB_PASSWORD}
-      JUAAPP_DB_NAME: ${JUAAPP_DB_NAME}
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: db
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./db/pgdata:/var/lib/postgresql/data/pgdata
@@ -24,7 +23,7 @@ services:
     build:
       context: ./freelancing/backend
       dockerfile: Dockerfile
-    entrypoint: /usr/src/app/dev-entrypoint.sh
+    entrypoint: /usr/src/app/${JUAAPP_ENTRYPOINT}
     volumes:
       - ./freelancing/backend:/usr/src/app
     ports:
@@ -34,11 +33,13 @@ services:
     depends_on:
       - db
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: adminpassword
-      POSTGRES_DB: db_juaapp
-      POSTGRES_HOST: db
-      JWT_SECRET: 'jugandofuchi'
+      JUAAPP_DB_HOST: ${JUAAPP_DB_HOST}
+      JUAAPP_DB_USER: ${JUAAPP_DB_USER}
+      JUAAPP_DB_PASSWORD: ${JUAAPP_DB_PASSWORD}
+      JUAAPP_DB_NAME: ${JUAAPP_DB_NAME}
+      JUAAPP_DB_PORT: ${JUAAPP_DB_PORT}
+      JUAAPP_ENV: ${JUAAPP_ENV}
+      JUAAPP_JWT_SECRET: ${JUAAPP_JWT_SECRET}
 
   pdfs:
     build:

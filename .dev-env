@@ -1,4 +1,8 @@
-JUAAPP_DB_HOST=localhost
+JUAAPP_DB_HOST=db
 JUAAPP_DB_USER=admin
 JUAAPP_DB_PASSWORD=adminpassword
 JUAAPP_DB_NAME=db
+JUAAPP_DB_PORT=5432
+JUAAPP_ENV=development
+JUAAPP_JWT_SECRET=jugandofuchi
+JUAAPP_ENTRYPOINT=dev-entrypoint.sh

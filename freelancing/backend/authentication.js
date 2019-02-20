@@ -30,7 +30,7 @@ passport.use(new LocalStrategy({
 
 passport.use(new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromHeader('x-juaapp-jwt'),
-        secretOrKey   : process.env.JWT_SECRET
+        secretOrKey   : process.env.JUAAPP_JWT_SECRET
     },
     function (jwtPayload, cb) {
         
