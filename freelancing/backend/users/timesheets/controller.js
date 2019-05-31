@@ -116,7 +116,7 @@ function formatEntriesForPdf(entry) {
 
 function formatTimesheetForPdf(timesheet, user) {
   // format entries
-
+  timesheet.filename = `${moment().format('MM-YYYY')}.pdf`
   timesheet.entries.map(formatEntriesForPdf);
   timesheet.totalHours = timesheet.entries.reduce((acum, entry) => {
     acum += entry.hours;
@@ -124,7 +124,7 @@ function formatTimesheetForPdf(timesheet, user) {
   }, 0);
   timesheet.avgHoursProTag = timesheet.totalHours / timesheet.entries.filter(entry => entry.id).length; // TODO: modify this for multiple entries per day
   timesheet.date = moment().format('DD.MM.YYYY'); // TODO: format must be set by client
-  timesheet.month = moment(timesheet.from).format('DD-YYYY');
+  timesheet.month = moment(timesheet.from).format('MM-YYYY');
   return Project.findOne({
       where: {
         id: timesheet.ProjectId
@@ -148,11 +148,17 @@ function formatTimesheetForPdf(timesheet, user) {
 
 function exportTimesheetAsPDFByTimesheetId(req, res) {
   req.internal = true;
+
   getUserTimesheetByTimesheetId(req, res)
     .then(timesheet => formatTimesheetForPdf(timesheet.dataValues, req.user))
-    .then(timesheet =>
-      PdfService.getPdf('timesheet.handlebars', timesheet).pipe(res))
-      .catch(e => console.log(e));
+    .then(timesheet => {
+        console.log('Content-Disposition', `attachment; filename="${timesheet.filename}"`)
+
+        const a = PdfService.getPdf('timesheet.handlebars', timesheet)
+        res.header('Content-Disposition', `attachment; filename="${timesheet.filename}"`)
+            a.pipe(res)
+    }).catch(e => console.log(e));
+
 }
 
 

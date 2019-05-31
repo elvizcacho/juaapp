@@ -29,9 +29,6 @@ process.on('uncaughtException', function (err) {
 app.get('/', (req, res, next) => {res.send({ok: 'ok'})});
 
 app.post('/:pdfTemplate', bodyParser.json(), (req, res, next) => {
-	console.log('DU KANNST DU HIER ANFANGEN!');
-	console.log(req.body);
-	console.log('END');
 	try {
 		const source = fs.readFileSync(`/usr/src/app/pdfs/templates/${req.params.pdfTemplate}`, 'utf8');
 		const template = Handlebars.compile(source);
@@ -48,7 +45,7 @@ app.post('/:pdfTemplate', bodyParser.json(), (req, res, next) => {
 				phantomPath: '/usr/local/bin/phantomjs'
 			};
 		}
-		pdf.create(html, options).toFile(`/usr/src/app/pdfs/temp/${uuidv4()}.pdf`, function(err, response) {
+		pdf.create(html, options).toFile(`/usr/src/app/pdfs/temp/${req.body.filename || uuidv4()}.pdf`, function(err, response) {
 			if (err) return console.log(err);
 			res.sendFile(response.filename);
 		});

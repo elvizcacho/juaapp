@@ -39,6 +39,7 @@ function exportInvoiceAsPDFByTimesheetId(req, res) {
     .then(timesheet => {
       data.invoiceNumber = '01' + moment(timesheet.from).format('MMYYYY'); // replace 01 with real data
       data.date = moment().format('DD.MM.YYYY')
+      data.toBePaidOn = moment(timesheet.from).add(1, 'month').add(22, 'days').format('DD.MM.YYYY');
       return Promise.all([
         timesheet.getTimesheetEntries({
             raw: true
