@@ -111,6 +111,7 @@ function formatEntriesForPdf(entry) {
   if (moment(entry.date).isValid()) entry.date = moment(entry.date).format('DD.MM.YYYY'); // TODO: format must be set by client
   if (moment(entry.checkIn).isValid()) entry.checkIn = moment(entry.checkIn).format('HH:mm');
   if (moment(entry.checkOut).isValid()) entry.checkOut = moment(entry.checkOut).format('HH:mm');
+  entry.remote = entry.remote ? '✓' : '-';
   return entry;
 }
 

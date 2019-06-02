@@ -9,4 +9,5 @@ export interface TimesheetEntry {
   comments: string;
   createdAt: Date;
   updatedAt: Date;
+  remote: boolean;
 }

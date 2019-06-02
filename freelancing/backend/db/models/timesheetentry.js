@@ -35,7 +35,8 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     },
-    comments: DataTypes.STRING
+    comments: DataTypes.STRING,
+    remote: DataTypes.BOOLEAN
   }, {});
   TimesheetEntry.associate = function(models) {
     models.TimesheetEntry.belongsTo(models.Timesheet);

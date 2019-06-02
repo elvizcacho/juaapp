@@ -158,6 +158,7 @@
         <table style="width:100%" class="table">
             <tr>
               <th>Tag, Datum</th>
+              <th>Remote</th>
               <th>von (hh:mm)</th> 
               <th>bis (hh:mm)</th>
               <th>Pausen</th>
@@ -167,6 +168,7 @@
           {{#each entries}}  
             <tr>
               <td>{{this.date}}</td>
+              <td>{{this.remote}}</td>
               <td>{{this.checkIn}}</td>
               <td>{{this.checkOut}}</td>
               <td>{{this.pause}}</td>

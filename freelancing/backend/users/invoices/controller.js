@@ -50,19 +50,25 @@ function exportInvoiceAsPDFByTimesheetId(req, res) {
     .then(results => {
       
       const timesheetEntries = results[0];
-      const totalWorkedHours = timesheetEntries.reduce((acum, entry) => {
-        acum += entry.hours;
+      const totalWorkedHoursOnSite = timesheetEntries.reduce((acum, entry) => {
+        acum += (entry.remote) ? 0: entry.hours;
+        return acum;
+      }, 0);
+      const totalWorkedHoursRemote = timesheetEntries.reduce((acum, entry) => {
+        acum += (entry.remote) ? entry.hours : 0;
         return acum;
       }, 0);
       const project = results[1];
       data.project = {
         description: project.description,
-        hourlyRate: project.hourlyRate
+        hourlyRateOnSite: project.hourlyRateOnSite,
+        hourlyRateRemote: project.hourlyRateRemote
       };
-      const net = project.hourlyRate * totalWorkedHours;
+      const net = project.hourlyRateOnSite * totalWorkedHoursOnSite + project.hourlyRateRemote * totalWorkedHoursRemote;
       const vatPayment = VAT * net;
       data.result = {
-        hours: totalWorkedHours,
+        hoursOnSite: totalWorkedHoursOnSite,
+        hoursRemote: totalWorkedHoursRemote,
         bruto: net + vatPayment,
         vat: VAT * 100,
         vatPayment: vatPayment,

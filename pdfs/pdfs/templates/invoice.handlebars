@@ -210,52 +210,62 @@
       </div>
       <div class="main">
         <table style="width:100%" class="table">
+            <tr style="border-left: 0;border-top: 0; border-right: 0">
+                <th></th>
+                <th colspan="2" style="border-top: 1px solid">Stunden</th>
+                <th colspan="2" style="border-top: 1px solid">Stundensätze</th>
+                <th style="border-right: 0px"></th>
+            </tr>
             <tr>
-              <th>Bechschreibung</th>
-              <th>Stunden</th> 
-              <th>Stundensatz</th>
-              <th>Summe</th>
+                <th>Bechschreibung</th>
+                <th>On site</th>
+                <th>Remote</th>
+                <th>On site</th>
+                <th>Remote</th>
+                <th>Summe</th>
             </tr>
             <tr>
               <td class="description">{{project.description}}</td>
-              <td>{{result.hours}}</td>
-              <td>{{project.hourlyRate}} €</td>
+              <td>{{result.hoursOnSite}}</td>
+              <td>{{result.hoursRemote}}</td>
+              <td>{{project.hourlyRateOnSite}} €</td>
+              <td>{{project.hourlyRateRemote}} €</td>
               <td>{{result.net}} €</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border"></td>
+              <td colspan="4" class="no-border"></td>
               <td class="border-left label">Zwischensumme</td>
               <td class="">{{result.net}} €</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info light-color-text">Sonstige Informationen</td>
+              <td colspan="4" class="no-border info light-color-text">Sonstige Informationen</td>
               <td class="border-left label">Steuersatz</td>
               <td class="">{{result.vat}} %</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">Zahlung durch Überweisung innerhalb</td>
+              <td colspan="4" class="no-border info">Zahlung durch Überweisung innerhalb</td>
               <td class="border-left label">Umsatzsteuer</td>
               <td class="">{{result.vatPayment}} €</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">30 Tage wahrscheinlich am {{toBePaidOn}} in:</td>
+              <td colspan="4" class="no-border info">30 Tage wahrscheinlich am {{toBePaidOn}} in:</td>
               <td class="border-left border-upsides label total">Ingezamt</td>
               <td class="border-upsides total">{{result.bruto}} €</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">IBAN: {{user.bank.iban}}</td>
+              <td colspan="4" class="no-border info">IBAN: {{user.bank.iban}}</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">SWIFT-Code: {{user.bank.swiftCode}}</td>
+              <td colspan="4" class="no-border info">SWIFT-Code: {{user.bank.swiftCode}}</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">Bankname: {{user.bank.name}}</td>
+              <td colspan="4" class="no-border info">Bankname: {{user.bank.name}}</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">Bankadresse: {{user.bank.address}}</td>
+              <td colspan="4" class="no-border info">Bankadresse: {{user.bank.address}}</td>
             </tr>
             <tr class="no-border">
-              <td colspan="2" class="no-border info">Danke für Ihr Vertrauen</td>
+              <td colspan="4" class="no-border info">Danke für Ihr Vertrauen</td>
             </tr>
         </table>
       </div>

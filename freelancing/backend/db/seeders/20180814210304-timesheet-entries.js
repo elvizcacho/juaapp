@@ -9,7 +9,8 @@ module.exports = {
       checkOut: '2018-04-02T18:00:00.000Z',
       pause: 60,
       hours: 8,
-      comments: 'I worked on ticket PRIV-22'
+      comments: 'I worked on ticket PRIV-22',
+      remote: false
     },
     {
       TimesheetId: 1,
@@ -18,7 +19,8 @@ module.exports = {
       checkOut: '2018-04-03T18:00:00.000Z',
       pause: 60,
       hours: 8,
-      comments: 'I worked on ticket PRIV-22'
+      comments: 'I worked on ticket PRIV-22',
+      remote: false
     },
     {
       TimesheetId: 1,
@@ -27,7 +29,8 @@ module.exports = {
       checkOut: '2018-04-04T18:00:00.000Z',
       pause: 60,
       hours: 8,
-      comments: 'I worked on ticket PRIV-22'
+      comments: 'I worked on ticket PRIV-22',
+      remote: false
     },
     {
       TimesheetId: 1,
@@ -36,7 +39,8 @@ module.exports = {
       checkOut: '2018-04-05T18:00:00.000Z',
       pause: 60,
       hours: 8,
-      comments: 'I worked on ticket PRIV-22'
+      comments: 'I worked on ticket PRIV-22',
+      remote: true
     },
     {
       TimesheetId: 1,
@@ -45,7 +49,8 @@ module.exports = {
       checkOut: '2018-04-06T18:00:00.000Z',
       pause: 60,
       hours: 8,
-      comments: 'I worked on ticket PRIV-22'
+      comments: 'I worked on ticket PRIV-22',
+      remote: false
     }], {});
   },
 

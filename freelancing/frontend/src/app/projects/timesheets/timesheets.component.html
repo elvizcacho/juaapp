@@ -24,6 +24,7 @@
     <table class="table mat-elevation-z8">
       <tr>
         <th>Day</th>
+        <th>Remote</th>
         <th>Check In</th>
         <th>Check Out</th>
         <th>{{ timesheet.status === 'closed' ? 'Hours' : 'Pause (min)' }}</th>
@@ -32,6 +33,7 @@
       <ng-container *ngIf="timesheet.status === 'closed'">
         <tr class="readable" *ngFor="let entry of timesheet.entries">
           <td>{{ entry.date | date:'d' }}</td>
+          <td>{{ (entry.remote) ? '✓' : '-' }}</td>
           <td>{{ entry.checkIn | date:'HH:mm' }}</td>
           <td>{{ entry.checkOut | date:'HH:mm' }}</td>
           <td>{{ entry.hours }}</td>
@@ -41,6 +43,9 @@
       <ng-container *ngIf="timesheet.status === 'open'">
         <tr class="editable" *ngFor="let entry of timesheet.entries">
           <td>{{ entry.date | date:'d' }}</td>
+          <td>
+            <input type="checkbox" [(ngModel)]="entry.remote"/>
+          </td>
           <td>
             <input matInput type="time" [(ngModel)]="entry.checkIn"/>
           </td>
