@@ -65,7 +65,7 @@ function exportInvoiceAsPDFByTimesheetId(req, res) {
         hourlyRateRemote: project.hourlyRateRemote
       };
       const net = project.hourlyRateOnSite * totalWorkedHoursOnSite + project.hourlyRateRemote * totalWorkedHoursRemote;
-      const vatPayment = VAT * net;
+      const vatPayment = Number((VAT * net).toFixed(2))
       data.result = {
         hoursOnSite: totalWorkedHoursOnSite,
         hoursRemote: totalWorkedHoursRemote,
