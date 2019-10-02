@@ -26,12 +26,13 @@
     "crypto": "^1.0.1",
     "express": "^4.16.3",
     "moment": "^2.22.2",
+    "moment-timezone": "^0.5.26",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pg": "^7.4.3",
     "request": "^2.88.0",
-    "sequelize": "^4.38.0",
+    "sequelize": "^4.44.3",
     "sequelize-cli": "^4.0.0"
   },
   "devDependencies": {

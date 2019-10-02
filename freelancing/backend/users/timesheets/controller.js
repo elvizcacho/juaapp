@@ -3,7 +3,7 @@ const Client = require('../../db/models').Client;
 const TimesheetEntry = require('../../db/models').TimesheetEntry;
 const Timesheet = require('../../db/models').Timesheet;
 const Project = require('../../db/models').Project;
-const moment = require('moment');
+const moment = require('moment-timezone');
 const PdfService = require('../../services').PdfService;
 
 function getUserTimesheetsByProjectId(req, res) {
@@ -26,8 +26,8 @@ function getUserTimesheetByTimesheetId(req, res) {
   // TODO: add user association to timesheets and timesheetEntries
   return Timesheet.findById(req.params.timesheetId)
     .then(timesheet => {
-      const from = moment(timesheet.from);
-      const to = moment(timesheet.to);
+      const from = moment(timesheet.from).tz('Europe/Berlin');
+      const to = moment(timesheet.to).tz('Europe/Berlin');
       const monthDays = to.diff(from, 'days') + 1;
       let timeSheetEntriesSquema = [];
       for (let i = 0; i < monthDays; i++) {
@@ -68,8 +68,8 @@ function createTimeSheetByMonthDate(req, res) {
   const projectId = req.body.projectId;
   Timesheet.create({
       ProjectId: projectId,
-      from: moment(monthDate),
-      to: moment(monthDate).endOf('month'),
+      from: moment(monthDate).tz('Europe/Berlin'),
+      to: moment(monthDate).tz('Europe/Berlin').endOf('month'),
       status: 'open'
     })
     .then(timesheet => {
@@ -108,24 +108,24 @@ function closeTimesheetByTimesheetId(req, res) {
 }
 
 function formatEntriesForPdf(entry) {
-  if (moment(entry.date).isValid()) entry.date = moment(entry.date).format('DD.MM.YYYY'); // TODO: format must be set by client
-  if (moment(entry.checkIn).isValid()) entry.checkIn = moment(entry.checkIn).format('HH:mm');
-  if (moment(entry.checkOut).isValid()) entry.checkOut = moment(entry.checkOut).format('HH:mm');
+  if (moment(entry.date).isValid()) entry.date = moment(entry.date).tz('Europe/Berlin').format('DD.MM.YYYY'); // TODO: format must be set by client
+  if (moment(entry.checkIn).isValid()) entry.checkIn = moment(entry.checkIn).tz('Europe/Berlin').format('HH:mm');
+  if (moment(entry.checkOut).isValid()) entry.checkOut = moment(entry.checkOut).tz('Europe/Berlin').format('HH:mm');
   entry.remote = entry.remote ? '✓' : '-';
   return entry;
 }
 
 function formatTimesheetForPdf(timesheet, user) {
   // format entries
-  timesheet.filename = `${moment().format('MM-YYYY')}.pdf`
+  timesheet.filename = `${moment().tz('Europe/Berlin').format('MM-YYYY')}.pdf`
   timesheet.entries.map(formatEntriesForPdf);
   timesheet.totalHours = timesheet.entries.reduce((acum, entry) => {
     acum += entry.hours;
     return acum;
   }, 0);
   timesheet.avgHoursProTag = timesheet.totalHours / timesheet.entries.filter(entry => entry.id).length; // TODO: modify this for multiple entries per day
-  timesheet.date = moment().format('DD.MM.YYYY'); // TODO: format must be set by client
-  timesheet.month = moment(timesheet.from).format('MM-YYYY');
+  timesheet.date = moment().tz('Europe/Berlin').format('DD.MM.YYYY'); // TODO: format must be set by client
+  timesheet.month = moment(timesheet.from).tz('Europe/Berlin').format('MM-YYYY');
   return Project.findOne({
       where: {
         id: timesheet.ProjectId
