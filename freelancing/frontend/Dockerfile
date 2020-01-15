@@ -1,4 +1,4 @@
-FROM node:8.11.3-alpine
+FROM node:8.17.0-alpine
 
 # Add ngnix
 RUN mkdir -p /run/nginx && apk update && apk add nginx
