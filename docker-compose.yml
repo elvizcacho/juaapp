@@ -94,7 +94,7 @@ services:
       - app-network
 
   haproxy:
-    image: haproxy:1.8.12-alpine
+    image: haproxy:1.9.13-alpine
     volumes:
       - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
     ports:
