@@ -71,7 +71,7 @@ services:
     build:
       context: ./freelancing/frontend
       dockerfile: Dockerfile
-    entrypoint: /usr/src/app/dev-entrypoint.sh
+    entrypoint: /usr/src/app/${JUAAPP_ENTRYPOINT}
     volumes:
       - ./freelancing/frontend:/usr/src/app
     ports:
