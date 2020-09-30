@@ -124,6 +124,7 @@ function formatTimesheetForPdf(timesheet, user) {
     return acum;
   }, 0);
   timesheet.avgHoursProTag = timesheet.totalHours / timesheet.entries.filter(entry => entry.id).length; // TODO: modify this for multiple entries per day
+  timesheet.avgHoursProTag = timesheet.avgHoursProTag.toFixed(2)
   timesheet.date = moment().tz('Europe/Berlin').format('DD.MM.YYYY'); // TODO: format must be set by client
   timesheet.month = moment(timesheet.from).tz('Europe/Berlin').format('MM-YYYY');
   return Project.findOne({

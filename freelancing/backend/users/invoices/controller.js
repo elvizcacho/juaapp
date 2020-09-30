@@ -5,12 +5,12 @@ const Timesheet = require('../../db/models').Timesheet;
 const TimesheetEntry = require('../../db/models').TimesheetEntry;
 const PdfService = require('../../services').PdfService;
 const moment = require('moment');
-const VAT = 0.19; // TODO: SET BY PROJECT
+const VAT = 0.16; // TODO: SET BY PROJECT
 
 function exportInvoiceAsPDFByTimesheetId(req, res) {
-  
+
   const data = {};
-  
+
   User
     .findById(req.user.id)
     .then(user => {
@@ -37,7 +37,7 @@ function exportInvoiceAsPDFByTimesheetId(req, res) {
       return Timesheet.findById(req.body.timesheetId);
     })
     .then(timesheet => {
-      data.invoiceNumber = '01' + moment(timesheet.from).format('MMYYYY'); //TODO: replace 01 with real data
+      data.invoiceNumber = '02' + moment(timesheet.from).format('MMYYYY'); //TODO: replace 01 with real data
       data.date = moment().format('DD.MM.YYYY')
       data.toBePaidOn = moment(timesheet.from).add(1, 'month').add(22, 'days').format('DD.MM.YYYY');
       return Promise.all([
@@ -48,7 +48,7 @@ function exportInvoiceAsPDFByTimesheetId(req, res) {
       ]);
     })
     .then(results => {
-      
+
       const timesheetEntries = results[0];
       const totalWorkedHoursOnSite = timesheetEntries.reduce((acum, entry) => {
         acum += (entry.remote) ? 0: entry.hours;
@@ -89,8 +89,8 @@ function exportInvoiceAsPDFByTimesheetId(req, res) {
       return data;
     })
     .then(data => PdfService.getPdf('invoice.handlebars', data).pipe(res));
-  
-  
+
+
 }
 
 module.exports.exportInvoiceAsPDFByTimesheetId = exportInvoiceAsPDFByTimesheetId;
