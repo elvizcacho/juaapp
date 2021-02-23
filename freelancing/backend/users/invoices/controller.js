@@ -5,7 +5,7 @@ const Timesheet = require('../../db/models').Timesheet;
 const TimesheetEntry = require('../../db/models').TimesheetEntry;
 const PdfService = require('../../services').PdfService;
 const moment = require('moment');
-const VAT = 0.16; // TODO: SET BY PROJECT
+const VAT = 0.19; // TODO: SET BY PROJECT
 
 function exportInvoiceAsPDFByTimesheetId(req, res) {
 
@@ -64,12 +64,12 @@ function exportInvoiceAsPDFByTimesheetId(req, res) {
         hourlyRateOnSite: project.hourlyRateOnSite,
         hourlyRateRemote: project.hourlyRateRemote
       };
-      const net = project.hourlyRateOnSite * totalWorkedHoursOnSite + project.hourlyRateRemote * totalWorkedHoursRemote;
+      const net = Number((project.hourlyRateOnSite * totalWorkedHoursOnSite + project.hourlyRateRemote * totalWorkedHoursRemote).toFixed(2));
       const vatPayment = Number((VAT * net).toFixed(2))
       data.result = {
         hoursOnSite: totalWorkedHoursOnSite,
         hoursRemote: totalWorkedHoursRemote,
-        bruto: net + vatPayment,
+        bruto: Number((net + vatPayment).toFixed(2)),
         vat: VAT * 100,
         vatPayment: vatPayment,
         net: net

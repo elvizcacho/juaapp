@@ -4,7 +4,7 @@
 npm install
 
 # run and watch app
-npm run watch
+npm run start
 
 
 

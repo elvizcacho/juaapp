@@ -28,6 +28,7 @@ process.on('uncaughtException', function (err) {
 
 app.get('/', (req, res, next) => {res.send({ok: 'ok'})});
 
+
 app.post('/:pdfTemplate', bodyParser.json(), (req, res, next) => {
 	try {
 		const source = fs.readFileSync(`/usr/src/app/pdfs/templates/${req.params.pdfTemplate}`, 'utf8');
@@ -38,11 +39,13 @@ app.post('/:pdfTemplate', bodyParser.json(), (req, res, next) => {
 			delete req.body.pdfOptions.phantomPath;
 			options = req.body.pdfOptions;
 			options.phantomPath = '/usr/local/bin/phantomjs';
+			options.timeout = '100000'
 		} else {
 			options = {
 				format: 'Legal',
 				orientation: 'portrait',
-				phantomPath: '/usr/local/bin/phantomjs'
+				phantomPath: '/usr/local/bin/phantomjs',
+				timeout: '100000'
 			};
 		}
 		pdf.create(html, options).toFile(`/usr/src/app/pdfs/temp/${req.body.filename || uuidv4()}.pdf`, function(err, response) {
